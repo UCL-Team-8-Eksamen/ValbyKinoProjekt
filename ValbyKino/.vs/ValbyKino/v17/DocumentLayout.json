@@ -1,29 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\karga\\source\\repos\\ValbyKino\\",
+  "WorkspaceRootPath": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\source\\repos\\valbykino\\valbykino\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\source\\repos\\valbykino\\valbykino\\models\\movierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\movierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\source\\repos\\valbykino\\valbykino\\models\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\source\\repos\\valbykino\\valbykino\\models\\showing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\showing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\source\\repos\\valbykino\\valbykino\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\source\\repos\\valbykino\\valbykino\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\models\\showingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\showingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\models\\movierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\movierepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\models\\showing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\showing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\models\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -34,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,24 +46,36 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IRepository.cs",
-              "DocumentMoniker": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\Models\\IRepository.cs",
-              "RelativeDocumentMoniker": "ValbyKino\\Models\\IRepository.cs",
-              "ToolTip": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\Models\\IRepository.cs",
-              "RelativeToolTip": "ValbyKino\\Models\\IRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
+              "DocumentIndex": 1,
+              "Title": "ShowingRepository.cs",
+              "DocumentMoniker": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\ShowingRepository.cs",
+              "RelativeDocumentMoniker": "ValbyKino\\Models\\ShowingRepository.cs",
+              "ToolTip": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\ShowingRepository.cs",
+              "RelativeToolTip": "ValbyKino\\Models\\ShowingRepository.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABMAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T08:44:02.171Z",
+              "WhenOpened": "2024-11-20T08:56:18.728Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\IRepository.cs",
+              "RelativeDocumentMoniker": "ValbyKino\\Models\\IRepository.cs",
+              "ToolTip": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\IRepository.cs",
+              "RelativeToolTip": "ValbyKino\\Models\\IRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-20T08:44:02.171Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MovieRepository.cs",
-              "DocumentMoniker": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\Models\\MovieRepository.cs",
+              "DocumentMoniker": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\MovieRepository.cs",
               "RelativeDocumentMoniker": "ValbyKino\\Models\\MovieRepository.cs",
-              "ToolTip": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\Models\\MovieRepository.cs",
+              "ToolTip": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\MovieRepository.cs",
               "RelativeToolTip": "ValbyKino\\Models\\MovieRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwA4AAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -70,9 +86,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Showing.cs",
-              "DocumentMoniker": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\Models\\Showing.cs",
+              "DocumentMoniker": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\Showing.cs",
               "RelativeDocumentMoniker": "ValbyKino\\Models\\Showing.cs",
-              "ToolTip": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\Models\\Showing.cs",
+              "ToolTip": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\Showing.cs",
               "RelativeToolTip": "ValbyKino\\Models\\Showing.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -81,24 +97,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Movie.cs",
-              "DocumentMoniker": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\Models\\Movie.cs",
+              "DocumentMoniker": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\Movie.cs",
               "RelativeDocumentMoniker": "ValbyKino\\Models\\Movie.cs",
-              "ToolTip": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\Models\\Movie.cs",
+              "ToolTip": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\Movie.cs",
               "RelativeToolTip": "ValbyKino\\Models\\Movie.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAvAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-20T08:13:01.969Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\MainWindow.xaml",
               "RelativeDocumentMoniker": "ValbyKino\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\MainWindow.xaml",
               "RelativeToolTip": "ValbyKino\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-11-20T08:07:34.504Z",
@@ -106,16 +122,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "ValbyKino\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\MainWindow.xaml.cs",
               "RelativeToolTip": "ValbyKino\\MainWindow.xaml.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T08:07:28.698Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T08:07:28.698Z"
             }
           ]
         }
