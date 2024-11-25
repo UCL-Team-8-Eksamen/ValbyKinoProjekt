@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace ValbyKino.Models
 {
-    public class ShowingRepository : IRepository<Showing>
+    public class ShowRepository : IRepository<Show>
     {
-        public ObservableCollection<Showing> Showings { get; set; }
-        public ShowingRepository() 
+        public ObservableCollection<Show> Shows { get; set; }
+        public ShowRepository() 
         {
-            Showings = new ObservableCollection<Showing>();
+            Shows = new ObservableCollection<Show>();
         }
-        public void Add(Showing entity)
+        public void Add(Show entity)
         {
             throw new NotImplementedException();
         }
@@ -24,17 +24,17 @@ namespace ValbyKino.Models
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Showing> GetAll()
+        public IEnumerable<Show> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Showing GetById(int id)
+        public Show GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Showing entity)
+        public void Update(Show entity)
         {
             throw new NotImplementedException();
         }

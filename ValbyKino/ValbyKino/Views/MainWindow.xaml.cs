@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ValbyKino.ViewModels;
 
 namespace ValbyKino
 {
@@ -19,6 +20,8 @@ namespace ValbyKino
         public MainWindow()
         {
             InitializeComponent();
+            MovieViewModel mvm = new MovieViewModel();
+            DataContext = mvm;
         }
     }
 }
