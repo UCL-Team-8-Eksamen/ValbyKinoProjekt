@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\ValbyKino.csproj": {}
+    "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\ValbyKino.csproj": {}
   },
   "projects": {
-    "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\ValbyKino.csproj": {
+    "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\ValbyKino.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\ValbyKino.csproj",
+        "projectUniqueName": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\ValbyKino.csproj",
         "projectName": "ValbyKino",
-        "projectPath": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\ValbyKino.csproj",
+        "projectPath": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\ValbyKino.csproj",
         "packagesPath": "C:\\Users\\karga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\karga\\source\\repos\\ValbyKino\\ValbyKino\\obj\\",
+        "outputPath": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\karga\\AppData\\Roaming\\NuGet\\NuGet.Config",
