@@ -14,7 +14,7 @@ namespace ValbyKino.Models
     }
 
 
-    public class Showing
+    public class Show
     {
         public DateTime Date { get; set; }
         public Version Version { get; set; }
@@ -22,7 +22,7 @@ namespace ValbyKino.Models
         public string Category { get; set; }
         public int RoomNumber { get; set; }
 
-        public Showing(DateTime date, Version version, int screeningFormat, string category, int roomNumber)
+        public Show(DateTime date, Version version, int screeningFormat, string category, int roomNumber)
         {
             Date = date;
             Version = version;

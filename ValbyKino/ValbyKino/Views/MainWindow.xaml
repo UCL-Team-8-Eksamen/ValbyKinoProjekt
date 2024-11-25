@@ -1,0 +1,52 @@
+﻿<Window x:Class="ValbyKino.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ValbyKino"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListBox
+                            SelectedItem="{Binding SelectedMovie}"
+                            ItemsSource="{Binding Movies}"
+                            Grid.Column="0"
+                            Margin="6,64,10,10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding LocalTitle, StringFormat=' {0}'}"/>
+                        <TextBlock Text="{Binding DirectorLastName, StringFormat=' {0}'}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button
+                                Content="Tilføj Film"
+                                Margin="21,9,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Height="50"
+                                Width="110"
+                                Command="{Binding AddCmd}"
+                                CommandParameter="{Binding}" />
+        <Button
+                                Content="Tilføj Film"
+                                Margin="155,9,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Height="50"
+                                Width="110"
+                                Command="{Binding AddCmd}"
+                                CommandParameter="{Binding}" />
+        <Button
+                                Content="Tilføj Film"
+                                Margin="155,9,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Height="50"
+                                Width="110"
+                                Command="{Binding AddCmd}"
+                                CommandParameter="{Binding}" />
+    </Grid>
+</Window>
