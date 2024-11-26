@@ -27,5 +27,10 @@ namespace ValbyKino.Models
             NationalReleaseDate = releaseDate;
             AlternativeContent = alternativeContent;
         }
+
+        public Movie()
+        {
+
+        }
     }
 }
