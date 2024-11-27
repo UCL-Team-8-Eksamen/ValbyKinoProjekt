@@ -1,0 +1,99 @@
+﻿<Page x:Class="ValbyKino.Views.MovieView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ValbyKino.Views"
+      mc:Ignorable="d"
+      Background="#FFFDD0">
+
+    <Grid Margin="20,20,35,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="7*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Section -->
+        <StackPanel Grid.Column="0" Background="#FFFDD0" Margin="10">
+            <TextBlock FontSize="24" FontWeight="Bold" Foreground="Black" Margin="0,0,0,20" 
+                       Background="#6B8E23" HorizontalAlignment="Center" Width="313" 
+                       Text="MOVIE" />
+
+            <!-- Movie Fields -->
+            <StackPanel Margin="0,10">
+                <TextBlock Text="Original Title" Margin="0,0,0,5" />
+                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+            </StackPanel>
+            <StackPanel Margin="0,10">
+                <TextBlock Text="Local Title" Margin="0,0,0,5" />
+                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+            </StackPanel>
+            <StackPanel Margin="0,10">
+                <TextBlock Text="Director First Name" Margin="0,0,0,5" />
+                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+            </StackPanel>
+            <StackPanel Margin="0,10">
+                <TextBlock Text="Director Last Name" Margin="0,0,0,5" />
+                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+            </StackPanel>
+            <StackPanel Margin="0,10">
+                <TextBlock Text="Original Country" Margin="0,0,0,5" />
+                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+            </StackPanel>
+            <StackPanel Margin="0,10">
+                <TextBlock Text="National Release Date" Margin="0,0,0,5" />
+                <DatePicker Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+            </StackPanel>
+            <StackPanel Margin="0,10">
+                <TextBlock Text="Alternative Content" Margin="0,0,0,5" />
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <RadioButton Content="Yes" GroupName="AlternativeContent" Margin="55,0,70,0" />
+                    <RadioButton Content="No" GroupName="AlternativeContent" />
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Buttons -->
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Center">
+                <Button Content="ADD" Command="{Binding AddCommand}" Width="75" Height="35" 
+                        Background="#6B8E23" Foreground="White" BorderBrush="Black" BorderThickness="1" Margin="0,10" />
+                <Button Content="UPDATE" Command="{Binding UpdateCommand}" Width="75" Height="35" 
+                        Background="#6B8E23" Foreground="White" BorderBrush="Black" BorderThickness="1" Margin="22,10" />
+                <Button Content="DELETE" Command="{Binding DeleteCommand}" Width="75" Height="35" 
+                        Background="#6B8E23" Foreground="White" BorderBrush="Black" BorderThickness="1" Margin="0,10" />
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Right Section -->
+        <StackPanel Grid.Column="1" Background="White" Margin="10,10,-30,10">
+            <!-- Tekst med baggrund i centrum -->
+            <Grid Margin="0,0,0,10">
+                <Border Background="#6B8E23" HorizontalAlignment="Stretch" CornerRadius="4">
+                    <TextBlock FontSize="24" FontWeight="Bold" Foreground="Black" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center" 
+                       Text="Movie List" Padding="10,5"/>
+                </Border>
+            </Grid>
+
+            <!-- DataGrid med tydelige linjer -->
+            <DataGrid ItemsSource="{Binding Movies}" 
+              SelectedItem="{Binding SelectedItem}"
+              AutoGenerateColumns="False" FontWeight="Bold" HeadersVisibility="Column" 
+              Background="White" BorderBrush="#6B8E23" BorderThickness="1" 
+              GridLinesVisibility="All" Margin="0,10"
+              AlternationCount="2"
+              AlternatingRowBackground="#F0F0F0" 
+              RowBackground="White">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Original Title" Binding="{Binding OriginalTitle}" Width="*" />
+                    <DataGridTextColumn Header="Local Title" Binding="{Binding LocalTitle}" Width="*" />
+                    <DataGridTextColumn Header="Director First Name" Binding="{Binding DirectorFirstName}" Width="*" />
+                    <DataGridTextColumn Header="Director Last Name" Binding="{Binding DirectorLastName}" Width="*" />
+                    <DataGridTextColumn Header="Original Country" Binding="{Binding OriginalCountry}" Width="*" />
+                    <DataGridTextColumn Header="National Release Date" Binding="{Binding NationalReleaseDate}" Width="*" />
+                    <DataGridTextColumn Header="Alternative Content" Binding="{Binding AlternativeContent}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+    </Grid>
+</Page>

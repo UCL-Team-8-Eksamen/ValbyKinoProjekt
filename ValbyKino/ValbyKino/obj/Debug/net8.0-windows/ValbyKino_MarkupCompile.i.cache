@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\obj\Debug\net8.0-windows\
+C:\Users\ahefr\source\repos\ValbyKinoProjek\ValbyKino\ValbyKino\obj\Debug\net8.0-windows\
 ValbyKino
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\App.xaml
-1-1644662438
+C:\Users\ahefr\source\repos\ValbyKinoProjek\ValbyKino\ValbyKino\App.xaml
+31233745371
 
-131651035892
-198-556154604
-Views\MainWindow.xaml;
+16-1403009607
+198-1509178875
+Views\LoginView.xaml;Views\MainWindow.xaml;Views\MovieView.xaml;
 
-False
+True
 
