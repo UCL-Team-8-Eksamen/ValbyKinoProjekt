@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\App.xaml
-1-1644662438
+31233745371
 
-111738447260
+14-1315598239
 2142120197110
-Views\MainWindow.xaml;
+Views\LoginView.xaml;Views\MainWindow.xaml;Views\MovieView.xaml;
 
 False
 

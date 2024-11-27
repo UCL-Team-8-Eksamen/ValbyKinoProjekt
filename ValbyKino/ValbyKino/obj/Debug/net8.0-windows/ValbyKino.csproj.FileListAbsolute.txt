@@ -75,3 +75,8 @@ C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\bin\Debug\net8.0-
 C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
 C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\obj\Debug\net8.0-windows\ValbyKino.csproj.AssemblyReference.cache
 C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\obj\Debug\net8.0-windows\ValbyKino.csproj.Up2Date
+C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\obj\Debug\net8.0-windows\Views\LoginView.g.cs
+C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\obj\Debug\net8.0-windows\Views\MovieView.g.cs
+C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\obj\Debug\net8.0-windows\Views\LoginView.baml
+C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\obj\Debug\net8.0-windows\Views\MovieView.baml
+C:\Users\karga\Desktop\LK\ValbyKinoProjekt\ValbyKino\ValbyKino\obj\Debug\net8.0-windows\App.baml
