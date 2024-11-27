@@ -1,43 +1,140 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
+using System.Diagnostics.Metrics;
+using System.Net;
 
 namespace ValbyKino.Models
 {
     public class MovieRepository : IRepository<Movie>
     {
+
+
+
         public ObservableCollection<Movie> Movies { get; set; }
-        public MovieRepository() 
+
+        private readonly string _connectionString;
+
+        public MovieRepository(string connectionString) 
         {
             Movies = new ObservableCollection<Movie>();
-
+            _connectionString = connectionString;
         }
-        public void Add(Movie entity)
+
+        public void Add(Movie movie)
         {
-            throw new NotImplementedException();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("uspCreateMovie", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@OriginalTitle", movie.OriginalTitle);
+                command.Parameters.AddWithValue("@LocalTitle", movie.LocalTitle);
+                command.Parameters.AddWithValue("@OriginalCountry", movie.OriginalCountry);
+                command.Parameters.AddWithValue("@NationalReleaseDate", movie.NationalReleaseDate);
+                command.Parameters.AddWithValue("@AlternativeContent", movie.AlternativeContent);
+                command.Parameters.AddWithValue("@DirectorFirstName", movie.DirectorFirstName);
+                command.Parameters.AddWithValue("@DirectorLastName", movie.DirectorLastName);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            string query = "DELETE FROM MOVIE WHERE MovieID = @MovieID";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MovieID", id);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<Movie> GetAll()
         {
-            throw new NotImplementedException();
+            var movies = new ObservableCollection<Movie>();
+            string query = "SELECT * FROM vmovie_director;";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        movies.Add(new Movie
+                        {
+                            OriginalTitle = (string)reader["OriginalTitle"],
+                            LocalTitle = (string)reader["LocalTitle"],
+                            DirectorFirstName = (string)reader["DirectorFirstName"],
+                            DirectorLastName = (string)reader["DirectorLastName"],
+                            OriginalCountry = (string)reader["OriginalCountry"],
+                            NationalReleaseDate = (DateTime)reader["NationalReleaseDate"],
+                            AlternativeContent = (bool)reader["AlternativeContent"]
+                        });
+                    }
+                }
+            }
+
+            return movies;
         }
 
         public Movie GetById(int id)
         {
-            throw new NotImplementedException();
+            Movie movie = null;
+            string query = "SELECT * FROM MOVIE WHERE MovieID = @MovieID";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MovieID", id);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        movie = new Movie
+                        {
+                            OriginalTitle = (string)reader["OriginalTitle"],
+                            LocalTitle = (string)reader["LocalTitle"],
+                            DirectorFirstName = " ",
+                            DirectorLastName = " ",
+                            OriginalCountry = (string)reader["OriginalCountry"],
+                            NationalReleaseDate = DateTime.Now,
+                            AlternativeContent = false
+                        };
+                    }
+                }
+            }
+
+            return movie;
         }
 
-        public void Update(Movie entity)
-        {
-            throw new NotImplementedException();
-        }
+        //public void Update(Movie movie)
+        //{
+        //    string query = "UPDATE PRODUCT SET MovieID = @MovieID WHERE ShowID = @ShowID";
+
+        //    using (SqlConnection connection = new SqlConnection(_connectionString))
+        //    {
+        //        SqlCommand command = new SqlCommand(query, connection);
+        //        command.Parameters.AddWithValue("@CategoryID", product.CategoryID);
+        //        command.Parameters.AddWithValue("@ProductID", product.ProductID);
+        //        connection.Open();
+        //        command.ExecuteNonQuery();
+        //    }
+        //}
     }
 }

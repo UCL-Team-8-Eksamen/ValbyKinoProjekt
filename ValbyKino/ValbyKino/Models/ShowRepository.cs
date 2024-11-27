@@ -34,9 +34,9 @@ namespace ValbyKino.Models
             throw new NotImplementedException();
         }
 
-        public void Update(Show entity)
-        {
-            throw new NotImplementedException();
-        }
+        //public void Update(Show entity)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
