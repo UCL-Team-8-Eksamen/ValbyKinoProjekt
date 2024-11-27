@@ -29,7 +29,6 @@ namespace ValbyKino.Models
 
         public void Add(Movie movie)
         {
-            //string query = "INSERT INTO MOVIE (MovieID) VALUES (@MovieID)";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -43,25 +42,9 @@ namespace ValbyKino.Models
                 command.Parameters.AddWithValue("@AlternativeContent", movie.AlternativeContent);
                 command.Parameters.AddWithValue("@DirectorFirstName", movie.DirectorFirstName);
                 command.Parameters.AddWithValue("@DirectorLastName", movie.DirectorLastName);
-                command.Parameters.AddWithValue("@DirectorID", 76);
-                command.Parameters.AddWithValue("@MovieID", 43);
                 command.ExecuteNonQuery();
                 connection.Close();
             }
-
-     
- 
-            //    sql_cmnd.Parameters.AddWithValue("@FirstName", SqlDbType.NVarChar).Value = firstName;
-            //    sql_cmnd.Parameters.AddWithValue("@LastName", SqlDbType.NVarChar).Value = lastName;
-            //    sql_cmnd.Parameters.AddWithValue("@Email", SqlDbType.Int).Value = email;
-            //    sql_cmnd.Parameters.AddWithValue("@Address", SqlDbType.Int).Value = address;
-            //    sql_cmnd.Parameters.AddWithValue("@City", SqlDbType.Int).Value = city;
-            //    sql_cmnd.Parameters.AddWithValue("@Country", SqlDbType.Int).Value = country;
-            //    sql_cmnd.Parameters.AddWithValue("@Points", SqlDbType.Int).Value = points;
-
-            //    sql_cmnd.ExecuteNonQuery();
-            //    connection.Close();
-            //}
         }
 
         public void Delete(int id)

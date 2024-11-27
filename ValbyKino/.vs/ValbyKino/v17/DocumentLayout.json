@@ -15,16 +15,16 @@
       "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\viewmodels\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\models\\showrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\showrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\models\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\models\\showrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|solutionrelative:valbykino\\models\\showrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{88514583-C980-44B6-9790-5152CD4154E6}|ValbyKino\\ValbyKino.csproj|c:\\users\\karga\\desktop\\lk\\valbykinoprojekt\\valbykino\\valbykino\\models\\show.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -67,14 +67,14 @@
               "RelativeDocumentMoniker": "ValbyKino\\Models\\MovieRepository.cs",
               "ToolTip": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\MovieRepository.cs",
               "RelativeToolTip": "ValbyKino\\Models\\MovieRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIkAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-20T08:43:06.116Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Movie.cs",
               "DocumentMoniker": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\Movie.cs",
               "RelativeDocumentMoniker": "ValbyKino\\Models\\Movie.cs",
@@ -82,8 +82,7 @@
               "RelativeToolTip": "ValbyKino\\Models\\Movie.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAA1wCAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T08:13:01.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T08:13:01.969Z"
             },
             {
               "$type": "Document",
@@ -106,7 +105,7 @@
               "RelativeDocumentMoniker": "ValbyKino\\ViewModels\\MovieViewModel.cs",
               "ToolTip": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\ViewModels\\MovieViewModel.cs",
               "RelativeToolTip": "ValbyKino\\ViewModels\\MovieViewModel.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAAABUAAAAAAAAA",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAACAAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-21T12:20:14.745Z",
               "EditorCaption": ""
@@ -125,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "ShowRepository.cs",
               "DocumentMoniker": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\ShowRepository.cs",
               "RelativeDocumentMoniker": "ValbyKino\\Models\\ShowRepository.cs",
@@ -149,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\Models\\IRepository.cs",
               "RelativeDocumentMoniker": "ValbyKino\\Models\\IRepository.cs",
@@ -157,8 +156,7 @@
               "RelativeToolTip": "ValbyKino\\Models\\IRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T08:44:02.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T08:44:02.171Z"
             },
             {
               "$type": "Document",
@@ -195,16 +193,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-21T12:42:13.705Z",
               "EditorCaption": " [Read Only]"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }
