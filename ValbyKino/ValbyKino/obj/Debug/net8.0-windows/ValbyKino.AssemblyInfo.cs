@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ValbyKino")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9a662332ad6f0cc19d0fd6f8cf55be18a14f8c7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ea9f5201a55e5e3dffb8f14d2260b9a7649ecf3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ValbyKino")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ValbyKino")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
