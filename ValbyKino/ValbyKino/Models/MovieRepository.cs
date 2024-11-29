@@ -14,14 +14,11 @@ namespace ValbyKino.Models
 {
     public class MovieRepository : IRepository<Movie>
     {
-
-
-
         public ObservableCollection<Movie> Movies { get; set; }
 
         private readonly string _connectionString;
 
-        public MovieRepository(string connectionString) 
+        public MovieRepository(string connectionString)
         {
             Movies = new ObservableCollection<Movie>();
             _connectionString = connectionString;
@@ -49,14 +46,15 @@ namespace ValbyKino.Models
 
         public void Delete(int id)
         {
-            string query = "DELETE FROM MOVIE WHERE MovieID = @MovieID";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MovieID", id);
                 connection.Open();
+                SqlCommand command = new SqlCommand("uspRemoveMovie", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@MovieID", id);
                 command.ExecuteNonQuery();
+                connection.Close();
             }
         }
 
@@ -94,13 +92,13 @@ namespace ValbyKino.Models
         public Movie GetById(int id)
         {
             Movie movie = null;
-            string query = "SELECT * FROM MOVIE WHERE MovieID = @MovieID";
-
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MovieID", id);
                 connection.Open();
+                SqlCommand command = new SqlCommand("uspGetMovieByID", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@MovieID", id);
+                command.ExecuteNonQuery();
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
@@ -110,11 +108,11 @@ namespace ValbyKino.Models
                         {
                             OriginalTitle = (string)reader["OriginalTitle"],
                             LocalTitle = (string)reader["LocalTitle"],
-                            DirectorFirstName = " ",
-                            DirectorLastName = " ",
+                            DirectorFirstName = (string)reader["DirectorFirstName"],
+                            DirectorLastName = (string)reader["DirectorLastName"],
                             OriginalCountry = (string)reader["OriginalCountry"],
-                            NationalReleaseDate = DateTime.Now,
-                            AlternativeContent = false
+                            NationalReleaseDate = (DateTime)reader["NationalReleaseDate"],
+                            AlternativeContent = (bool)reader["AlternativeContent"]
                         };
                     }
                 }
