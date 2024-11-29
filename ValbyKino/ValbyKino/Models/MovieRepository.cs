@@ -121,18 +121,23 @@ namespace ValbyKino.Models
             return movie;
         }
 
-        //public void Update(Movie movie)
-        //{
-        //    string query = "UPDATE PRODUCT SET MovieID = @MovieID WHERE ShowID = @ShowID";
-
-        //    using (SqlConnection connection = new SqlConnection(_connectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(query, connection);
-        //        command.Parameters.AddWithValue("@CategoryID", product.CategoryID);
-        //        command.Parameters.AddWithValue("@ProductID", product.ProductID);
-        //        connection.Open();
-        //        command.ExecuteNonQuery();
-        //    }
-        //}
+        public void Update(Movie movie)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("uspUpdateMovie", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@OriginalTitle", movie.OriginalTitle);
+                command.Parameters.AddWithValue("@LocalTitle", movie.LocalTitle);
+                command.Parameters.AddWithValue("@OriginalCountry", movie.OriginalCountry);
+                command.Parameters.AddWithValue("@NationalReleaseDate", movie.NationalReleaseDate);
+                command.Parameters.AddWithValue("@AlternativeContent", movie.AlternativeContent);
+                command.Parameters.AddWithValue("@DirectorFirstName", movie.DirectorFirstName);
+                command.Parameters.AddWithValue("@DirectorLastName", movie.DirectorLastName);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
     }
 }
