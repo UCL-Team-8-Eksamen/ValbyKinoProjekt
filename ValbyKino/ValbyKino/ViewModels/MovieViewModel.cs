@@ -1,19 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ValbyKino.Models;
 
 namespace ValbyKino.ViewModels
 {
     public class MovieViewModel : ViewModelBase
     {
+
+        public string OriginalTitle { get; set; }
+        public string LocalTitle { get; set; }
+        public string DirectorFirstName { get; set; }
+        public string DirectorLastName { get; set; }
+        public string OriginalCountry { get; set; }
+        public DateTime NationalReleaseDate { get; set; }
+        public bool AlternativeContent { get; set; }
+
+
         IRepository<Movie> movieRepository = new MovieRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
         public ObservableCollection<Movie> Movies { get; set; }
-        public MovieViewModel() 
+        public MovieViewModel()
         {
             Movies = (ObservableCollection<Movie>)movieRepository.GetAll();
             //movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
@@ -36,20 +41,27 @@ namespace ValbyKino.ViewModels
         }
         //public Movie SelectedMovie { get; set; }
 
+        //public Movie SelectedMovie { get; set; }
+
         //Jeg laver en privat metode, jeg vil have at metoden tilføjer en ny Movie til Movies samlingen
+        //Forudsætningerne for at metoden fungerer er?
+        //Movies er en gyldig samlingstype (f.eks. en liste: List<Movie>), og den er korrekt initialiseret et sted i min kode.
+        //Klassen Movie er defineret, og dens konstruktør understøtter at modtage de angivne parametre, enten som en del af
+        //konstruktøren eller som egenskaber, der kan initialiseres med objektinitialisering.
+
         private void AddMovie()
         {
             // Movies er samlingen
             // Add er metoden
             // new Movie kalder konstruktøren med de nødvendige parametre
             Movies.Add(new Movie(
-                "Zorro",                        // OriginalTitle
+                OriginalTitle = "Zorro", LocalTitle =                    // OriginalTitle
                 "Zorro Den Maskerede Hævner",   // LocalTitle
-                "Martin",                       // DirectorFirstName
-                "Campbell",                     // DirectorLastName
-                "US",                           // OriginalCountry
-                new DateTime(1998, 7, 17),      // NationalReleaseDate
-                true                            // AlternativeContent
+                DirectorFirstName = "Martin",                       // DirectorFirstName
+                DirectorLastName = "Campbell",                     // DirectorLastName
+                OriginalCountry = "US",                           // OriginalCountry
+                NationalReleaseDate = new DateTime(1998, 7, 17),      // NationalReleaseDate
+                AlternativeContent = true                            // AlternativeContent
             ));
         }
 

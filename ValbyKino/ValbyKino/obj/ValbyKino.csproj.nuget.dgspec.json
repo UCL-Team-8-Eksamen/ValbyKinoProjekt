@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\ValbyKino.csproj": {}
+    "C:\\Users\\ahefr\\Source\\Repos\\ValbyKinoProjekt29November\\ValbyKino\\ValbyKino\\ValbyKino.csproj": {}
   },
   "projects": {
-    "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\ValbyKino.csproj": {
+    "C:\\Users\\ahefr\\Source\\Repos\\ValbyKinoProjekt29November\\ValbyKino\\ValbyKino\\ValbyKino.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\ValbyKino.csproj",
+        "projectUniqueName": "C:\\Users\\ahefr\\Source\\Repos\\ValbyKinoProjekt29November\\ValbyKino\\ValbyKino\\ValbyKino.csproj",
         "projectName": "ValbyKino",
-        "projectPath": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\ValbyKino.csproj",
-        "packagesPath": "C:\\Users\\karga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\karga\\Desktop\\LK\\ValbyKinoProjekt\\ValbyKino\\ValbyKino\\obj\\",
+        "projectPath": "C:\\Users\\ahefr\\Source\\Repos\\ValbyKinoProjekt29November\\ValbyKino\\ValbyKino\\ValbyKino.csproj",
+        "packagesPath": "C:\\Users\\ahefr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ahefr\\Source\\Repos\\ValbyKinoProjekt29November\\ValbyKino\\ValbyKino\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\karga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ahefr\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -69,7 +69,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
