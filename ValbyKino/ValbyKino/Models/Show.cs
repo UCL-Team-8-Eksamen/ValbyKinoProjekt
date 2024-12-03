@@ -21,14 +21,20 @@ namespace ValbyKino.Models
         public int ScreeningFormat { get; set; }
         public string Category { get; set; }
         public int RoomNumber { get; set; }
+        public Movie Movie { get; set; }
 
-        public Show(DateTime date, Version version, int screeningFormat, string category, int roomNumber)
+        public Show(DateTime date, Version version, int screeningFormat, string category, int roomNumber, Movie movie)
         {
             Date = date;
             Version = version;
             ScreeningFormat = screeningFormat;
             Category = category;
             RoomNumber = roomNumber;
+            Movie = movie;
+        }
+
+        public Show()
+        {
         }
     }
 }
