@@ -21,6 +21,7 @@ namespace ValbyKino.Models
         public int ScreeningFormat { get; set; }
         public string Category { get; set; }
         public int RoomNumber { get; set; }
+        public Movie Movie { get; set; }
 
         public Show(DateTime date, Version version, int screeningFormat, string category, int roomNumber)
         {
@@ -30,5 +31,8 @@ namespace ValbyKino.Models
             Category = category;
             RoomNumber = roomNumber;
         }
+        
+        public Show()
+        { }
     }
 }
