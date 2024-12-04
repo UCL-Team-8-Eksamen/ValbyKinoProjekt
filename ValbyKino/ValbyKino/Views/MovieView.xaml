@@ -54,11 +54,11 @@
 
             <!-- Buttons -->
             <StackPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Center">
-                <Button Content="ADD" Command="{Binding AddCommand}" Width="75" Height="35" 
+                <Button Content="ADD" Command="{Binding AddMovieCommand}" Width="75" Height="35" 
                         Background="#6B8E23" Foreground="White" BorderBrush="Black" BorderThickness="1" Margin="0,10" />
                 <Button Content="UPDATE" Command="{Binding UpdateCommand}" Width="75" Height="35" 
                         Background="#6B8E23" Foreground="White" BorderBrush="Black" BorderThickness="1" Margin="22,10" />
-                <Button Content="DELETE" Command="{Binding DeleteCommand}" Width="75" Height="35" 
+                <Button Content="DELETE" Command="{Binding DeleteMovieCommand}" Width="75" Height="35" 
                         Background="#6B8E23" Foreground="White" BorderBrush="Black" BorderThickness="1" Margin="0,10" />
             </StackPanel>
         </StackPanel>

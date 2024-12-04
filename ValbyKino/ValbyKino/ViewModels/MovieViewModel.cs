@@ -78,14 +78,14 @@ namespace ValbyKino.ViewModels
 
         }
 
-        //Vi laver en objekt af vores RelayCommand som vi kalder AddCommand. Jeg sætter AddCommand til at være en new RelayCommand,
+        //Vi laver en objekt af vores RelayCommand som vi kalder AddMovieCommand. Jeg sætter AddMovieCommand til at være en new RelayCommand,
         //execute er sat til at være metoden AddItem som tilføjer nye item til samlingen som hedder items
-        //Fordi vi vil have at AddCommand kan udføres altid, fjerner vi canExecute => (return true;)
-        public RelayCommand AddCommand => new RelayCommand(execute => AddMovie());
+        //Fordi vi vil have at AddMovieCommand kan udføres altid, fjerner vi canExecute => (return true;)
+        public RelayCommand AddMovieCommand => new RelayCommand(execute => AddMovie());
 
         //execute er sat til at være metoden DeleteItem som fjerner  item fra samlingen som hedder items
         //canExecute her gør at DeleteItem ikke er aktiveret, hvis der ikke er valgt noget, knappen bliver aktiv, når vi har valgt noget
-        public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteMovie(), canExecute => SelectedItem != null);
+        public RelayCommand DeleteMovieCommand => new RelayCommand(execute => DeleteMovie(), canExecute => SelectedItem != null);
 
 
 
