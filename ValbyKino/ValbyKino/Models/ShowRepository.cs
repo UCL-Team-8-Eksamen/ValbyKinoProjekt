@@ -42,7 +42,15 @@ namespace ValbyKino.Models
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("uspRemoveShow", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@ShowID", id);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
 
         public IEnumerable<Show> GetAll()
