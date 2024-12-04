@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace ValbyKino.ViewModels
 {
@@ -41,7 +36,7 @@ namespace ValbyKino.ViewModels
         public bool CanExecute(object? parameter)
         {
             //vi kan udføre noget hvis vi ikke har en funktion for canExecute eller vi kan køre canExecute med parameter
-            //
+
             return canExecute == null || canExecute(parameter);
         }
 
@@ -49,5 +44,7 @@ namespace ValbyKino.ViewModels
         {
             execute(parameter);
         }
+
+
     }
 }
