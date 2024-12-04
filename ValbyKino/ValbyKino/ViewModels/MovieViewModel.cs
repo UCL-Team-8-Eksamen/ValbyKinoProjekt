@@ -20,7 +20,7 @@ namespace ValbyKino.ViewModels
         public MovieViewModel()
         {
             Movies = (ObservableCollection<Movie>)movieRepository.GetAll();
-            //movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
+            movieRepository.Add(new Movie("Wicked (Part 1)", "Wicked", "John", "Chu", CountryCode.US.ToString(), DateTime.Now, false));
             //Movies.Add(new Movie("Crossing", "En Kvinde i Istanbul", "Levan", "Akin", "TR", DateTime.Now, false));
             //Movies.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
             //Movies.Add(new Movie("Foredrag: Videnskaben bag øl", "Foredrag: Videnskaben bag øl", "", "", "DK", DateTime.Now, true));
@@ -51,7 +51,7 @@ namespace ValbyKino.ViewModels
                 "Zorro Den Maskerede Hævner",   // LocalTitle
                 DirectorFirstName = "Martin",                       // DirectorFirstName
                 DirectorLastName = "Campbell",                     // DirectorLastName
-                OriginalCountry = "US",                           // OriginalCountry
+                OriginalCountry = CountryCode.US.ToString(),                           // OriginalCountry
                 NationalReleaseDate = new DateTime(1998, 7, 17),      // NationalReleaseDate
                 AlternativeContent = true                            // AlternativeContent
             ));

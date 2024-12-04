@@ -9,6 +9,8 @@ using System.Data.SqlClient;
 using Microsoft.Data.SqlClient;
 using System.Diagnostics.Metrics;
 using System.Net;
+using System.IO.Packaging;
+using System.Diagnostics.Eventing.Reader;
 
 namespace ValbyKino.Models
 {
@@ -78,6 +80,7 @@ namespace ValbyKino.Models
                             LocalTitle = (string)reader["LocalTitle"],
                             DirectorFirstName = (string)reader["DirectorFirstName"],
                             DirectorLastName = (string)reader["DirectorLastName"],
+                            //OriginalCountry = (CountryCode)Enum.Parse(typeof(CountryCode), (string)reader["OriginalCountry"]),
                             OriginalCountry = (string)reader["OriginalCountry"],
                             NationalReleaseDate = (DateTime)reader["NationalReleaseDate"],
                             AlternativeContent = (bool)reader["AlternativeContent"]
