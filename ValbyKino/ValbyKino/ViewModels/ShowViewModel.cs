@@ -15,7 +15,7 @@ namespace ValbyKino.ViewModels
         public int ScreeningFormat { get; set; }
         public string Category { get; set; }
         public int RoomNumber { get; set; }
-        public Movie Movie { get; set; }
+        public ObservableCollection<Movie> Movies { get; set; }
 
         //??Hvad gør den her kode??
         IRepository<Movie> showRepository = new MovieRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
