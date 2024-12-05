@@ -26,13 +26,15 @@ namespace ValbyKino.Models
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("uspCreateMovie", connection);
+                SqlCommand command = new SqlCommand("uspCreateShow", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@Date", show.Date);
-                command.Parameters.AddWithValue("@Version", show.Version);
+                command.Parameters.AddWithValue("@Time", show.Time);
+                command.Parameters.AddWithValue("@Version", show.Version.ToString());
                 command.Parameters.AddWithValue("@ScreeningFormat", show.ScreeningFormat);
                 command.Parameters.AddWithValue("@Category", show.Category);
                 command.Parameters.AddWithValue("@RoomNumber", show.RoomNumber);
+                command.Parameters.AddWithValue("@MovieID", show.Movie.MovieID);
                 command.ExecuteNonQuery();
                 connection.Close();
 

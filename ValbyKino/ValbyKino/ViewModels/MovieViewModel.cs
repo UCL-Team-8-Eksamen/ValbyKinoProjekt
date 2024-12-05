@@ -16,9 +16,11 @@ namespace ValbyKino.ViewModels
         public DateTime NationalReleaseDate { get; set; }
         public bool AlternativeContent { get; set; }
         IRepository<Movie> movieRepository = new MovieRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
+        
         public ObservableCollection<Movie> Movies { get; set; }
         public MovieViewModel()
         {
+            //Movie Wicked = new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false);
             Movies = (ObservableCollection<Movie>)movieRepository.GetAll();
             //movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
             //Movies.Add(new Movie("Crossing", "En Kvinde i Istanbul", "Levan", "Akin", "TR", DateTime.Now, false));

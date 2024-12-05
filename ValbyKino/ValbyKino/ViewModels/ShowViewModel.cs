@@ -19,11 +19,12 @@ namespace ValbyKino.ViewModels
         public ObservableCollection<Movie> Movies { get; set; }
 
         //??Hvad gør den her kode??
-        IRepository<Movie> showRepository = new MovieRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
+        IRepository<Show> showRepository = new ShowRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
         public ObservableCollection<Show> Shows { get; set; }
         public ShowViewModel()
         {
             Shows = (ObservableCollection<Show>)showRepository.GetAll();
+            showRepository.Add(new Show(DateTime.Now, DateTime.Now, Version.ST, 2, "Forpremiere", 2));
             //movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
             //Movies.Add(new Movie("Crossing", "En Kvinde i Istanbul", "Levan", "Akin", "TR", DateTime.Now, false));
             //Movies.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
