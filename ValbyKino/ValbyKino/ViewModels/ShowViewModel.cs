@@ -2,10 +2,11 @@
 using System.ComponentModel;
 using ValbyKino.Models;
 using Version = ValbyKino.Models.Version;
+using System.Net;
 
 namespace ValbyKino.ViewModels
 {
-    public class ShowViewModel
+    public class ShowViewModel : ViewModelBase
     {
         //Nyeste udgave
         public DateTime Date { get; set; }
@@ -81,7 +82,7 @@ namespace ValbyKino.ViewModels
         //Vi laver en objekt af vores RelayCommand som vi kalder AddShowCommand. Jeg sætter AddShowCommand til at være en new RelayCommand,
         //execute er sat til at være metoden AddShow som tilføjer nye show til samlingen som hedder shows
         //Fordi vi vil have at AddShowCommand kan udføres, under vise betingelser skriver vi betingelserne i CanExecute kodedelen
-        public RelayCommand AddShowCommand => new RelayCommand(execute => AddShow(), canExecute => Movie != null && Date != null && Time != null && Version != null && ScreeningFormat != null && RoomNumber != null);
+        //public RelayCommand AddShowCommand => new RelayCommand(execute => AddShow(), canExecute => Movie != null && Date != null && Time != null && Version != null && ScreeningFormat != null && RoomNumber != null);
 
         //execute er sat til at være metoden DeleteItem som fjerner  item fra samlingen som hedder items
         //canExecute her gør at DeleteItem ikke er aktiveret, hvis der ikke er valgt noget, knappen bliver aktiv, når vi har valgt noget
@@ -90,40 +91,4 @@ namespace ValbyKino.ViewModels
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
 }

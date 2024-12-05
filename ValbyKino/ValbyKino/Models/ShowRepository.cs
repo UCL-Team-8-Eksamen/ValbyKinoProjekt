@@ -112,10 +112,11 @@ namespace ValbyKino.Models
                 }
                 return show;
             }
-
-            //public void Update(Show entity)
-            //{
-            //    throw new NotImplementedException();
-            //}
         }
+
+        //public void Update(Show entity)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
+}
