@@ -14,12 +14,16 @@
         public DateTime Time { get; set; }
         public Version Version { get; set; }
         //int?
-        public int ScreeningFormat { get; set; }
+        public string ScreeningFormat { get; set; }
         public string Category { get; set; }
         public int RoomNumber { get; set; }
         public Movie Movie { get; set; }
+        public int ShowID { get; set; }
+        public int Admissions { get; set; }
+        public int Price { get; set; }
+        public string YA = " ";
 
-        public Show(DateTime date, DateTime time, Version version, int screeningFormat, string category, int roomNumber)
+        public Show(DateTime date, DateTime time, Version version, string screeningFormat, string category, int roomNumber)
         {
             Date = date;
             Version = version;
@@ -27,9 +31,10 @@
             Category = category;
             RoomNumber = roomNumber;
             Time = time;
+            if (Category.Equals("Børnebiffen")) YA = "1";
         }
 
-        public Show(DateTime date, DateTime time, Version version, int screeningFormat, string category, int roomNumber, Movie movie)
+        public Show(DateTime date, DateTime time, Version version, string screeningFormat, string category, int roomNumber, Movie movie)
         {
             Date = date;
             Version = version;

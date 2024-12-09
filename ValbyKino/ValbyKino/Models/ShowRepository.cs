@@ -72,8 +72,8 @@ namespace ValbyKino.Models
                         shows.Add(new Show
                         {
                             Date = (DateTime)reader["Date"],
-                            Version = (Version)reader["Version"],
-                            ScreeningFormat = (int)reader["ScreeningFormat"],
+                            Version = (Version)Enum.Parse(typeof(Version), (string)reader["Version"]),
+                            ScreeningFormat = (string)reader["ScreeningFormat"],
                             Category = (string)reader["Category"],
                             RoomNumber = (int)reader["RoomNumber"],
                             Movie = movieRepository.GetById((int)reader["MovieId"])
@@ -105,7 +105,7 @@ namespace ValbyKino.Models
                         {
                             Date = (DateTime)reader["Date"],
                             Version = (Version)reader["Version"],
-                            ScreeningFormat = (int)reader["ScreeningFormat"],
+                            ScreeningFormat = (string)reader["ScreeningFormat"],
                             Category = (string)reader["Category"],
                             RoomNumber = (int)reader["RoomNumber"],
                             Movie = movieRepository.GetById((int)reader["MovieId"])
