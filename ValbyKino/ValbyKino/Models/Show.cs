@@ -20,8 +20,8 @@
         public Movie Movie { get; set; }
         public int ShowID { get; set; }
         public int Admissions { get; set; }
-        public int Price { get; set; }
-        public string YA = " ";
+        public int Price { get; set; } = 0;
+        public string YA { get; set; } = " ";
 
         public Show(DateTime date, DateTime time, Version version, string screeningFormat, string category, int roomNumber)
         {
@@ -31,7 +31,7 @@
             Category = category;
             RoomNumber = roomNumber;
             Time = time;
-            if (Category.Equals("Børnebiffen")) YA = "1";
+            if (category.Equals("Børnebiffen")) YA = "1";
         }
 
         public Show(DateTime date, DateTime time, Version version, string screeningFormat, string category, int roomNumber, Movie movie)
