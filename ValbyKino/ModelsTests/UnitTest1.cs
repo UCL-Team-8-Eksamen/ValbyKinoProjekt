@@ -43,6 +43,7 @@ namespace ModelTest
         {
             // Arrange
             DateTime date = new DateTime(2019, 1, 12);
+            DateTime time = new DateTime(1, 1, 1, 15, 25, 0); //Initializes a DateTime with 15:25 as the time and 0001-01-01 as the date
             Version version = 1;
             int screeningFormat = 1;
             string category = "Europa Kino";
@@ -53,6 +54,7 @@ namespace ModelTest
 
             // Assert
             Assert.AreEqual(date, show.Date);
+            Assert.AreEqual(time.TimeOfDay, show.Time.TimeOfDay); // Compare only the time part
             Assert.AreEqual(version, show.Version);
             Assert.AreEqual(screeningFormat, show.ScreeningFormat);
             Assert.AreEqual(category, show.Category);
