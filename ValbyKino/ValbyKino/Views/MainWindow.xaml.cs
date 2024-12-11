@@ -11,6 +11,7 @@ namespace ValbyKino
         public MainWindow()
         {
             InitializeComponent();
+            Main.Content = new LoginView();
 
         }
 
@@ -36,7 +37,7 @@ namespace ValbyKino
 
         private void Button_Click_AnnualRapport(object sender, RoutedEventArgs e)
         {
-
+            Main.Content = new AnnualReportView();
         }
     }
 }

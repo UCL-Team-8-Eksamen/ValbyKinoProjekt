@@ -5,19 +5,19 @@ using Version = ValbyKino.Models.Version;
 
 namespace ValbyKino.ViewModels
 {
-    public class ShowViewModel : INotifyPropertyChanged
+    public class ShowViewModel : ViewModelBase
     {
         // Nyeste udgave
-        public DateTime Date { get; set; } // Dato for forestillingen
-        public DateTime Time { get; set; } // Tidspunkt for forestillingen
-        public Version Version { get; set; } // Version af forestillingen (fx 2D eller 3D)
+        public DateTime Date { get; set; } // Dato for Forestillingen
+        public DateTime Time { get; set; } // Tidspunkt for Forestillingen
+        public Version Version { get; set; } // Version af Forestillingen (fx 2D eller 3D)
         // int?
-        public int ScreeningFormat { get; set; } // Format for forestillingen (fx digital, analog, etc.)
+        public int ScreeningFormat { get; set; } // Format for Forestillingen (fx digital, analog, etc.)
         public string Category { get; set; } // Kategori (fx action, drama, etc.)
         public int RoomNumber { get; set; } // Salens nummer
 
         public ObservableCollection<Movie> Movies { get; set; } = new ObservableCollection<Movie>(); // Liste over film
-        public ObservableCollection<Show> Shows { get; set; } // Liste over forestillinger
+        public ObservableCollection<Show> Shows { get; set; } // Liste over Forestillinger
 
         // ?? Hvad gør den her kode ??
         // Opretter et repository for film, som bruges til at hente og manipulere data

@@ -5,8 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ValbyKino.Views"
       mc:Ignorable="d"
+       d:DesignHeight="750" d:DesignWidth="1250"
       Background="#FFFDD0">
-
+        
     <Grid Margin="20,20,35,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />

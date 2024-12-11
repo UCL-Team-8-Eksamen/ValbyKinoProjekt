@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ValbyKino"
         mc:Ignorable="d"
-        Title="Valby Kino Billetsystem" Height="450" Width="800"
+        Title="Valby Kino Billetsystem" Height="600" Width="1200"
         Background="#FFFDD0">
     <Grid>
         <!-- Layout with two columns -->
@@ -21,7 +21,7 @@
 
             <!-- Buttons -->
             <Button Content="FILM" Background="#6B8E23" Foreground="White" FontWeight="Bold" Margin="0,0,0,10" Height="40" Click="Button_Click_Movie"/>
-            <Button Content="FORESTILLINGER" Background="#6B8E23" Foreground="White" FontWeight="Bold" Margin="0,0,0,10" Height="40" Click="Button_Click_Forestalling" />
+            <Button Content="ForestillingER" Background="#6B8E23" Foreground="White" FontWeight="Bold" Margin="0,0,0,10" Height="40" Click="Button_Click_Forestalling" />
             <Button Content="ÅRSRAPPORT" Background="#6B8E23" Foreground="White" FontWeight="Bold" Height="40" Click="Button_Click_AnnualRapport"/>
         </StackPanel>
 
