@@ -19,7 +19,7 @@ namespace ValbyKino.ViewModels
         public ObservableCollection<Movie> Movies { get; set; }
         public MovieViewModel()
         {
-            Movies = (ObservableCollection<Movie>)movieRepository.GetAll();
+            //Movies = (ObservableCollection<Movie>)movieRepository.GetAll();
             //movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
             //Movies.Add(new Movie("Crossing", "En Kvinde i Istanbul", "Levan", "Akin", "TR", DateTime.Now, false));
             //Movies.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));

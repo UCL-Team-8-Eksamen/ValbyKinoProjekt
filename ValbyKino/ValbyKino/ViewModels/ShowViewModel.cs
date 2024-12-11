@@ -5,32 +5,75 @@ using Version = ValbyKino.Models.Version;
 
 namespace ValbyKino.ViewModels
 {
-    public class ShowViewModel
+    public class ShowViewModel : INotifyPropertyChanged
     {
-        //Nyeste udgave
-        public DateTime Date { get; set; }
-        public DateTime Time { get; set; }
-        public Version Version { get; set; }
-        //int?
-        public int ScreeningFormat { get; set; }
-        public string Category { get; set; }
-        public int RoomNumber { get; set; }
-        public ObservableCollection<Movie> Movies { get; set; }
+        // Nyeste udgave
+        public DateTime Date { get; set; } // Dato for forestillingen
+        public DateTime Time { get; set; } // Tidspunkt for forestillingen
+        public Version Version { get; set; } // Version af forestillingen (fx 2D eller 3D)
+        // int?
+        public int ScreeningFormat { get; set; } // Format for forestillingen (fx digital, analog, etc.)
+        public string Category { get; set; } // Kategori (fx action, drama, etc.)
+        public int RoomNumber { get; set; } // Salens nummer
 
-        //??Hvad gør den her kode??
+        public ObservableCollection<Movie> Movies { get; set; } = new ObservableCollection<Movie>(); // Liste over film
+        public ObservableCollection<Show> Shows { get; set; } // Liste over forestillinger
+
+        // ?? Hvad gør den her kode ??
+        // Opretter et repository for film, som bruges til at hente og manipulere data
         IRepository<Movie> showRepository = new MovieRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
-        public ObservableCollection<Show> Shows { get; set; }
+
         public ShowViewModel()
         {
-            Shows = (ObservableCollection<Show>)showRepository.GetAll();
-            //movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
-            //Movies.Add(new Movie("Crossing", "En Kvinde i Istanbul", "Levan", "Akin", "TR", DateTime.Now, false));
-            //Movies.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
-            //Movies.Add(new Movie("Foredrag: Videnskaben bag øl", "Foredrag: Videnskaben bag øl", "", "", "DK", DateTime.Now, true));
+            // Initialiserer listen over shows ved at hente data fra repository
+            try
+            {
+                Shows = new ObservableCollection<Show>((IEnumerable<Show>)showRepository.GetAll());
+            }
+            catch (Exception ex)
+            {
+                // Log fejl, hvis data ikke kan hentes
+                Console.WriteLine($"Fejl under indlæsning af shows: {ex.Message}");
+            }
 
+            // movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
+            // Movies.Add(new Movie("Crossing", "En Kvinde i Istanbul", "Levan", "Akin", "TR", DateTime.Now, false));
+            // Movies.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
+            // Movies.Add(new Movie("Foredrag: Videnskaben bag øl", "Foredrag: Videnskaben bag øl", "", "", "DK", DateTime.Now, true));
         }
 
-        private ICollectionView showCollectionView;
+        private Show selectedItem; // Det valgte element i UI
+
+        // Det her vil repræsentere, uanset hvilket element er valgt, og lader os ændre dens oplysninger
+        public Show? SelectedItem
+        {
+            get { return selectedItem; }
+
+            // Hver gang setter bliver kaldt, kalder vi OnPropertyChanged. Hvis selectedItem bliver sat,
+            // bliver alle passende informeret, og vores bindinger vil virke
+            set { selectedItem = value; OnPropertyChanged(nameof(SelectedItem)); }
+        }
+
+        private void AddShow()
+        {
+            // Shows er samlingen
+            // Add er metoden
+            // new Show kalder konstruktøren med de nødvendige parametre
+            Shows.Add(new Show(Date, Time, Version, ScreeningFormat, Category, RoomNumber));
+        }
+
+        private void DeleteShow()
+        {
+            // Movies er samlingen
+            // Remove er metoden
+            // selectedItem dvs. ting som er valgt
+            if (selectedItem != null)
+            {
+                Shows.Remove(selectedItem);
+            }
+        }
+
+        private ICollectionView showCollectionView; // Brugt til filtrering og sortering af data i UI
 
         public ICollectionView ShowCollectionView
         {
@@ -42,88 +85,24 @@ namespace ValbyKino.ViewModels
             }
         }
 
+        // Vi laver en objekt af vores RelayCommand, som vi kalder AddShowCommand. Jeg sætter AddShowCommand til at være en ny RelayCommand,
+        // execute er sat til at være metoden AddShow, som tilføjer nye shows til samlingen, som hedder shows
+        // Fordi vi vil have, at AddShowCommand kan udføres under visse betingelser, skriver vi betingelserne i CanExecute kodedelen
+        public RelayCommand AddShowCommand => new RelayCommand(
+            execute => AddShow(),
+            canExecute => Date != null && Time != null && Version != null && ScreeningFormat > 0 && RoomNumber > 0);
 
-        //Metodeafsnit (AddShow og DeleteShow)
-        private void AddShow()
+        // execute er sat til at være metoden DeleteShow, som fjerner et item fra samlingen, som hedder items
+        // canExecute her gør, at DeleteShow ikke er aktiveret, hvis der ikke er valgt noget. Knappen bliver aktiv, når vi har valgt noget
+        public RelayCommand DeleteShowCommand => new RelayCommand(
+            execute => DeleteShow(),
+            canExecute => SelectedItem != null);
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
         {
-            // Shows er samlingen
-            // Add er metoden
-            // new Show kalder konstruktøren med de nødvendige parametre
-            Shows.Add(new Show(
-            Date, Time, Version, ScreeningFormat, Category, RoomNumber
-
-            ));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
-        //Movies er samlingen
-        //Remove er metoden
-        //selectedItem dvs. ting som er valgt
-        private void DeleteShow()
-        {
-
-            Shows.Remove(selectedItem);
-
-        }
-
-        //Det her vil repræsenter, uanset hvilket element er valgt,og lader os ændre dens oplysninger
-        private Show selectedItem;
-
-        public Show? SelectedItem
-        {
-            get { return selectedItem; }
-
-            //Hver gang setter bliver kaldt kalder vi OnPropertyChanged. Hvis selectedItem bliver sat bliver alle passende informeret og vores bindinger vil virke
-            set { selectedItem = value; OnPropertyChanged(); }
-        }
-
-
-        //Vi laver en objekt af vores RelayCommand som vi kalder AddShowCommand. Jeg sætter AddShowCommand til at være en new RelayCommand,
-        //execute er sat til at være metoden AddShow som tilføjer nye show til samlingen som hedder shows
-        //Fordi vi vil have at AddShowCommand kan udføres, under vise betingelser skriver vi betingelserne i CanExecute kodedelen
-        public RelayCommand AddShowCommand => new RelayCommand(execute => AddShow(), canExecute => Movie != null && Date != null && Time != null && Version != null && ScreeningFormat != null && RoomNumber != null);
-
-        //execute er sat til at være metoden DeleteItem som fjerner  item fra samlingen som hedder items
-        //canExecute her gør at DeleteItem ikke er aktiveret, hvis der ikke er valgt noget, knappen bliver aktiv, når vi har valgt noget
-        public RelayCommand DeleteShowCommand => new RelayCommand(execute => DeleteShow(), canExecute => SelectedItem != null);
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-}
+
