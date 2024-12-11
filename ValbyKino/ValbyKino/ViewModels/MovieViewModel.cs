@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using ValbyKino.Models;
 
 namespace ValbyKino.ViewModels
@@ -26,7 +27,13 @@ namespace ValbyKino.ViewModels
         {
             ObservableCollection<Show> shows = (ObservableCollection<Show>)showRepository.GetAll();
             ObservableCollection<Movie> movies = (ObservableCollection<Movie>)movieRepository.GetAll();
-            datahandler.PrintMovies(movies);
+            datahandler.PrintMovies(movies, shows);
+
+            ObservableCollection<Show> shows2 = (ObservableCollection<Show>)movieRepository.GetShowsByMovie(movies[1]);
+            
+
+
+
             //Movie Wicked = new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false);
             Movies = (ObservableCollection<Movie>)movieRepository.GetAll();
             //movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
