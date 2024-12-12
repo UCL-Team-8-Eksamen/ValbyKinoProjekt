@@ -11,8 +11,6 @@ namespace ValbyKino.Models
     public class Datahandler
     {
         public string FileName { get; set; }
-
-        //IRepository<Show> showRepository = new ShowRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
         public Datahandler(string fileName)
         {
             FileName = fileName;
