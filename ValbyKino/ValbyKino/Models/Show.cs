@@ -29,6 +29,7 @@ namespace ValbyKino.Models
         public Show(DateTime date, DateTime time, Version version, string screeningFormat, string category, int roomNumber)
         {
             Date = date;
+            Time = time;
             Version = version;
             ScreeningFormat = screeningFormat;
             Category = category;
@@ -40,11 +41,11 @@ namespace ValbyKino.Models
         public Show(DateTime date, DateTime time, Version version, string screeningFormat, string category, int roomNumber, Movie movie)
         {
             Date = date;
+            Time = time;
             Version = version;
             ScreeningFormat = screeningFormat;
             Category = category;
             RoomNumber = roomNumber;
-            Time = time;
             Movie = movie;
         }
 

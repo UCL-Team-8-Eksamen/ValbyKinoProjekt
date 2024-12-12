@@ -7,28 +7,18 @@ namespace RepositoriesTests
     [TestClass]
     public class MovieRepositoryTests
     {
-        private Mock<SqlConnection> _mockConnection;
-        private Mock<SqlCommand> _mockCommand;
-        private MovieRepository _repository;
+        private MovieRepository _movieRepository;
 
         [TestInitialize]
         public void Setup()
         {
-            // Arrange: Mock the SQL connection and command
-            _mockConnection = new Mock<SqlConnection>();
-            _mockCommand = new Mock<SqlCommand>();
-
-            mockCommand.Setup(cmd => cmd.ExecuteNonQuery()).Verifiable();
-            mockConnection.Setup(conn => conn.CreateCommand()).Returns(mockCommand.Object);
-
-            mockCommand.Setup(cmd => cmd.ExecuteReader()).Returns(mockReader.Object);
-  
-            var connectionString = "TestConnectionString";
-            _repository = new MovieRepository(connectionString);
+            // Connecting to the database
+            string connectionString = "Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;";
+            _movieRepository = new MovieRepository(connectionString);
         }
 
         [TestMethod]
-        public void Add_ShouldAddMovieToDatabase()
+        public void Add_ShouldAddMovieSuccessfully()
         {
             // Arrange
             var movie = new Movie
@@ -45,397 +35,368 @@ namespace RepositoriesTests
             // Act
             _repository.Add(movie);
 
-            // Assert: Here you would verify that the Add method invoked the expected SQL commands.
-            _mockCommand.Verify(cmd => cmd.ExecuteNonQuery(), Times.Once);
+            // Assert
+            var addedMovie = _movieRepository.GetAll().FirstOrDefault(m => m.OriginalTitle == "Aquaman");
+            Assert.IsNotNull(addedMovie, "The movie was not added.");
+            Assert.AreEqual(movie.OriginalTitle, addedMovie.OriginalTitle);
+        }
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Cleanup any movies added with a specific identifier
+            var testMovies = _movieRepository.GetAll()
+                .Where(m => m.OriginalTitle.StartsWith("Aquaman"));
+
+            foreach (var movie in testMovies)
+            {
+                _movieRepository.Delete(movie.MovieId);
+            }
         }
 
         [TestMethod]
-        public void Delete_ShoulDeleteMovieFromDatabase()
+        public void Delete_ShoulDeleteMovieSuccessfully()
         {
             // Arrange
-            var movieId = 5;
+            var movie = new Movie
+            {
+                OriginalTitle = "Aquaman",
+                LocalTitle = "Aquaman",
+                DirectorFirstName = "James",
+                DirectorLastName = "Wan",
+                OriginalCountry = "AU",
+                NationalReleaseDate = new DateTime(2018, 12, 13),
+                AlternativeContent = false
+            };
+
+            _movieRepository.Add(movie);
+            var addedMovie = _movieRepository.GetAll().First(m => m.OriginalTitle == "Aquaman");
 
             // Act
-            _repository.Delete(movieId);
+            _movieRepository.Delete(addedMovie.MovieId);
 
-            // Assert: Here you would verify that the Add method invoked the expected SQL commands.
-            mockCommand.Verify(cmd => cmd.Parameters.AddWithValue("@MovieId", movieId), Times.Once);
-            _mockCommand.Verify(cmd => cmd.ExecuteNonQuery(), Times.Once);
+            // Assert
+            var deletedMovie = _movieRepository.GetAll().FirstOrDefault(m => m.MovieID == addedMovie.MovieId);
+            Assert.IsNull(deletedMovie, "The movie was not deleted.");
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Cleanup any movies added with a specific identifier
+            var testMovies = _movieRepository.GetAll()
+                .Where(m => m.OriginalTitle.StartsWith("Aquaman"));
+
+            foreach (var movie in testMovies)
+            {
+                _movieRepository.Delete(movie.MovieId);
+            }
         }
 
         [TestMethod]
         public void GetById_ShouldReturnCorrectMovie()
         {
             // Arrange
-            var movieId = 11;
-            var expectedMovie = new Movie
+            var movie = new Movie
             {
-            OriginalTitle = "A casa tutti bene",
-            LocalTitle = "Min italienske familie",
-            DirectorFirstName = "Gabriele",
-            DirectorLastName = "Muccino",
-            OriginalCountry = "IT",
-            NationalReleaseDate = new DateTime(2019, 1, 3),
-            AlternativeContent = false
+                OriginalTitle = "Artic",
+                LocalTitle = "Artic",
+                DirectorFirstName = "Joe",
+                DirectorLastName = "Penna",
+                OriginalCountry = "IS",
+                NationalReleaseDate = new DateTime(2019, 1, 31),
+                AlternativeContent = false
             };
-
-            var mockReader = new Mock<SqlDataReader>();
-            mockReader.SetupSequence(reader => reader.Read())
-                      .Returns(true)
-                      .Returns(false); // Simulate a single row in the result set
-            mockReader.Setup(reader => reader["OriginalTitle"]).Returns(expectedMovie.OriginalTitle);
-            mockReader.Setup(reader => reader["LocalTitle"]).Returns(expectedMovie.LocalTitle);
-            mockReader.Setup(reader => reader["DirectorFirstName"]).Returns(expectedMovie.DirectorFirstName);
-            mockReader.Setup(reader => reader["DirectorLastName"]).Returns(expectedMovie.DirectorLastName);
-            mockReader.Setup(reader => reader["OriginalCountry"]).Returns(expectedMovie.OriginalCountry);
-            mockReader.Setup(reader => reader["NationalReleaseDate"]).Returns(expectedMovie.NationalReleaseDate);
-            mockReader.Setup(reader => reader["AlternativeContent"]).Returns(expectedMovie.AlternativeContent);
+            _movieRepository.Add(movie);
+            var addedMovie = _movieRepository.GetAll().First(m => m.OriginalTitle == "Artic");
 
             // Act
-            var actualMovie = repository.GetById(movieId);
+            var retrievedMovie = _movieRepository.GetById(addedMovie.MovieId);
 
             // Assert
-            Assert.IsNotNull(actualMovie);
-            Assert.AreEqual(expectedMovie.OriginalTitle, actualMovie.OriginalTitle);
-            Assert.AreEqual(expectedMovie.LocalTitle, actualMovie.LocalTitle);
-            Assert.AreEqual(expectedMovie.DirectorFirstName, actualMovie.DirectorFirstName);
-            Assert.AreEqual(expectedMovie.DirectorLastName, actualMovie.DirectorLastName);
-            Assert.AreEqual(expectedMovie.OriginalCountry, actualMovie.OriginalCountry);
-            Assert.AreEqual(expectedMovie.NationalReleaseDate, actualMovie.NationalReleaseDate);
-            Assert.AreEqual(expectedMovie.AlternativeContent, actualMovie.AlternativeContent);
+            Assert.IsNotNull(retrievedMovie, "The movie was not retrieved.");
+            Assert.AreEqual(movie.OriginalTitle, retrievedMovie.OriginalTitle);
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Cleanup any movies added with a specific identifier
+            var testMovies = _movieRepository.GetAll()
+                .Where(m => m.OriginalTitle.StartsWith("Artic"));
+
+            foreach (var movie in testMovies)
+            {
+                _movieRepository.Delete(movie.MovieID);
+            }
         }
 
         [TestMethod]
         public void GetAll_ShouldReturnAllMovies()
         {
-            // Arrange
-            var expectedMovies = new List<Movie>
-    {
-        new Movie
-        {
-            OriginalTitle = "A casa tutti bene",
-            LocalTitle = "Min italienske familie",
-            DirectorFirstName = "Gabriele",
-            DirectorLastName = "Muccino",
-            OriginalCountry = "IT",
-            NationalReleaseDate = new DateTime(2019, 1, 3),
-            AlternativeContent = false
-        },
-        new Movie
-        {
-            OriginalTitle = "A star is born",
-            LocalTitle = "A star is born",
-            DirectorFirstName = "Bradley",
-            DirectorLastName = "Cooper",
-            OriginalCountry = "US",
-            NationalReleaseDate = new DateTime(1989, 12, 6),
-            AlternativeContent = false
-        },
-
-         new Movie
-        {
-            OriginalTitle = "A star is born - ENCORE",
-            LocalTitle = "A star is born - ENCORE",
-            DirectorFirstName = "Guy",
-            DirectorLastName = "Richie",
-            OriginalCountry = "US",
-            NationalReleaseDate = new DateTime(2019, 3, 21),
-            AlternativeContent = false
-        },
-
-          new Movie
-        {
-            OriginalTitle = "Aladdin",
-            LocalTitle = "Aladdin",
-            DirectorFirstName = "James",
-            DirectorLastName = "Cameron",
-            OriginalCountry = "US",
-            NationalReleaseDate = new DateTime(2019, 5, 23),
-            AlternativeContent = false
-        },
-
-           new Movie
-        {
-            OriginalTitle = "Aliens",
-            LocalTitle = "Aliens",
-            DirectorFirstName = "Robert",
-            DirectorLastName = "Rodriguez",
-            OriginalCountry = "US",
-            NationalReleaseDate = new DateTime(1986, 10, 31),
-            AlternativeContent = false
-        }
-    };
-
-            var mockReader = new Mock<SqlDataReader>();
-            mockReader.SetupSequence(reader => reader.Read())
-                      .Returns(true)
-                      .Returns(true)
-                      .Returns(false); // Simulate two rows in the result set
-
-            // First movie
-            mockReader.Setup(reader => reader["OriginalTitle"]).Returns(expectedMovies[0].OriginalTitle);
-            mockReader.Setup(reader => reader["LocalTitle"]).Returns(expectedMovies[0].LocalTitle);
-            mockReader.Setup(reader => reader["DirectorFirstName"]).Returns(expectedMovies[0].DirectorFirstName);
-            mockReader.Setup(reader => reader["DirectorLastName"]).Returns(expectedMovies[0].DirectorLastName);
-            mockReader.Setup(reader => reader["OriginalCountry"]).Returns(expectedMovies[0].OriginalCountry);
-            mockReader.Setup(reader => reader["NationalReleaseDate"]).Returns(expectedMovies[0].NationalReleaseDate);
-            mockReader.Setup(reader => reader["AlternativeContent"]).Returns(expectedMovies[0].AlternativeContent);
-
-            // Second movie
-            mockReader.Setup(reader => reader["OriginalTitle"]).Returns(expectedMovies[1].OriginalTitle);
-            mockReader.Setup(reader => reader["LocalTitle"]).Returns(expectedMovies[1].LocalTitle);
-            mockReader.Setup(reader => reader["DirectorFirstName"]).Returns(expectedMovies[1].DirectorFirstName);
-            mockReader.Setup(reader => reader["DirectorLastName"]).Returns(expectedMovies[1].DirectorLastName);
-            mockReader.Setup(reader => reader["OriginalCountry"]).Returns(expectedMovies[1].OriginalCountry);
-            mockReader.Setup(reader => reader["NationalReleaseDate"]).Returns(expectedMovies[1].NationalReleaseDate);
-            mockReader.Setup(reader => reader["AlternativeContent"]).Returns(expectedMovies[1].AlternativeContent);
-
-            // Third movie
-            mockReader.Setup(reader => reader["OriginalTitle"]).Returns(expectedMovies[1].OriginalTitle);
-            mockReader.Setup(reader => reader["LocalTitle"]).Returns(expectedMovies[1].LocalTitle);
-            mockReader.Setup(reader => reader["DirectorFirstName"]).Returns(expectedMovies[1].DirectorFirstName);
-            mockReader.Setup(reader => reader["DirectorLastName"]).Returns(expectedMovies[1].DirectorLastName);
-            mockReader.Setup(reader => reader["OriginalCountry"]).Returns(expectedMovies[1].OriginalCountry);
-            mockReader.Setup(reader => reader["NationalReleaseDate"]).Returns(expectedMovies[1].NationalReleaseDate);
-            mockReader.Setup(reader => reader["AlternativeContent"]).Returns(expectedMovies[1].AlternativeContent);
-
-            // Fourth movie
-            mockReader.Setup(reader => reader["OriginalTitle"]).Returns(expectedMovies[1].OriginalTitle);
-            mockReader.Setup(reader => reader["LocalTitle"]).Returns(expectedMovies[1].LocalTitle);
-            mockReader.Setup(reader => reader["DirectorFirstName"]).Returns(expectedMovies[1].DirectorFirstName);
-            mockReader.Setup(reader => reader["DirectorLastName"]).Returns(expectedMovies[1].DirectorLastName);
-            mockReader.Setup(reader => reader["OriginalCountry"]).Returns(expectedMovies[1].OriginalCountry);
-            mockReader.Setup(reader => reader["NationalReleaseDate"]).Returns(expectedMovies[1].NationalReleaseDate);
-            mockReader.Setup(reader => reader["AlternativeContent"]).Returns(expectedMovies[1].AlternativeContent);
-
-            // Fifth movie
-            mockReader.Setup(reader => reader["OriginalTitle"]).Returns(expectedMovies[1].OriginalTitle);
-            mockReader.Setup(reader => reader["LocalTitle"]).Returns(expectedMovies[1].LocalTitle);
-            mockReader.Setup(reader => reader["DirectorFirstName"]).Returns(expectedMovies[1].DirectorFirstName);
-            mockReader.Setup(reader => reader["DirectorLastName"]).Returns(expectedMovies[1].DirectorLastName);
-            mockReader.Setup(reader => reader["OriginalCountry"]).Returns(expectedMovies[1].OriginalCountry);
-            mockReader.Setup(reader => reader["NationalReleaseDate"]).Returns(expectedMovies[1].NationalReleaseDate);
-            mockReader.Setup(reader => reader["AlternativeContent"]).Returns(expectedMovies[1].AlternativeContent);
-
-            // Act
-            var actualMovies = repository.GetAll().ToList();
+            //Act
+            var movies = _movieRepository.GetAll();
 
             // Assert
-            Assert.AreEqual(expectedMovies.Count, actualMovies.Count);
-            for (int i = 0; i < expectedMovies.Count; i++)
-            {
-                Assert.AreEqual(expectedMovies[i].OriginalTitle, actualMovies[i].OriginalTitle);
-                Assert.AreEqual(expectedMovies[i].LocalTitle, actualMovies[i].LocalTitle);
-                Assert.AreEqual(expectedMovies[i].DirectorFirstName, actualMovies[i].DirectorFirstName);
-                Assert.AreEqual(expectedMovies[i].DirectorLastName, actualMovies[i].DirectorLastName);
-                Assert.AreEqual(expectedMovies[i].OriginalCountry, actualMovies[i].OriginalCountry);
-                Assert.AreEqual(expectedMovies[i].NationalReleaseDate, actualMovies[i].NationalReleaseDate);
-                Assert.AreEqual(expectedMovies[i].AlternativeContent, actualMovies[i].AlternativeContent);
-            }
+            Assert.IsNotNull(movies, "The movie list should not be null.");
+            Assert.IsTrue(movies.Any(), "The movie list should not be empty.");
         }
 
+        [TestMethod]
+        public void Update_ShouldUpdateMovieSuccessfully()
+        {
+            // Arrange
+            var originalMovie = new Movie
+            {
+                OriginalTitle = "OriginalTitle",
+                LocalTitle = "OriginalLocalTitle",
+                DirectorFirstName = "OriginalFirstName",
+                DirectorLastName = "OriginalLastName",
+                OriginalCountry = "US",
+                NationalReleaseDate = new DateTime(2023, 1, 1),
+                AlternativeContent = false
+            };
+            _movieRepository.Add(originalMovie);
+
+            // Retrieve the added movie to get its MovieID
+            var addedMovie = _movieRepository.GetAll().First(m => m.OriginalTitle == "OriginalTitle");
+
+            // Update movie details
+            var updatedMovie = new Movie
+            {
+                MovieID = addedMovie.MovieId, // Ensure the MovieID is carried over
+                OriginalTitle = "UpdatedTitle",
+                LocalTitle = "UpdatedLocalTitle",
+                DirectorFirstName = "UpdatedFirstName",
+                DirectorLastName = "UpdatedLastName",
+                OriginalCountry = "UK",
+                NationalReleaseDate = new DateTime(2024, 1, 1),
+                AlternativeContent = true
+            };
+
+            // Act
+            _movieRepository.Update(updatedMovie);
+
+            // Assert
+            var retrievedMovie = _movieRepository.GetById(addedMovie.MovieId);
+            Assert.IsNotNull(retrievedMovie, "The updated movie was not retrieved.");
+            Assert.AreEqual(updatedMovie.OriginalTitle, retrievedMovie.OriginalTitle, "OriginalTitle was not updated correctly.");
+            Assert.AreEqual(updatedMovie.LocalTitle, retrievedMovie.LocalTitle, "LocalTitle was not updated correctly.");
+            Assert.AreEqual(updatedMovie.DirectorFirstName, retrievedMovie.DirectorFirstName, "DirectorFirstName was not updated correctly.");
+            Assert.AreEqual(updatedMovie.DirectorLastName, retrievedMovie.DirectorLastName, "DirectorLastName was not updated correctly.");
+            Assert.AreEqual(updatedMovie.OriginalCountry, retrievedMovie.OriginalCountry, "OriginalCountry was not updated correctly.");
+            Assert.AreEqual(updatedMovie.NationalReleaseDate, retrievedMovie.NationalReleaseDate, "NationalReleaseDate was not updated correctly.");
+            Assert.AreEqual(updatedMovie.AlternativeContent, retrievedMovie.AlternativeContent, "AlternativeContent was not updated correctly.");
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Cleanup any movies added with a specific identifier
+            var testMovies = _movieRepository.GetAll()
+                .Where(m => m.OriginalTitle.StartsWith("UpdatedTitle"));
+
+            foreach (var movie in testMovies)
+            {
+                _movieRepository.Delete(movie.MovieID);
+            }
+        }
     }
 
     public class ShowRepositoryTests
     {
-        private Mock<SqlConnection> _mockConnection;
-        private Mock<SqlCommand> _mockCommand;
-        private ShowRepository _repository;
+        private ShowRepository _showRepository;
 
         [TestInitialize]
         public void Setup()
         {
-            // Arrange: Mock the SQL connection and command
-            _mockConnection = new Mock<SqlConnection>();
-            _mockCommand = new Mock<SqlCommand>();
-
-            mockCommand.Setup(cmd => cmd.ExecuteNonQuery()).Verifiable();
-            mockConnection.Setup(conn => conn.CreateCommand()).Returns(mockCommand.Object);
-
-            mockCommand.Setup(cmd => cmd.ExecuteReader()).Returns(mockReader.Object);
-
-            var connectionString = "TestConnectionString";
-            _repository = new ShowRepository(connectionString);
+            // Connecting to the database
+            string connectionString = "Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;";
+            _showRepository = new ShowRepository(connectionString);
         }
 
         [TestMethod]
-        public void Add_ShouldAddShowToDatabase()
+        public void Add_ShouldAddShowSuccessfully()
         {
             // Arrange
             var show = new Show
             {
-                Date = new DateTime(2019, 1, 1),
-                Version = 3,
-                ScreeningFormat = 1,
-                Category = "Adventure",                
-                RoomNumber = 1
+                Date = DateTime.Now,
+                Time = DateTime.Now,
+                Version = Version.VO,
+                ScreeningFormat = 2,
+                Category = "DramaAdd",
+                RoomNumber = 1,
+                Movie = new Movie { MovieID = 16 }
             };
 
             // Act
-            _repository.Add(show);
+            _showRepository.Add(show);
 
             // Assert: Here you would verify that the Add method invoked the expected SQL commands.
-            _mockCommand.Verify(cmd => cmd.ExecuteNonQuery(), Times.Once);
+            var addedShow = _showRepository.GetAll().FirstOrDefault(s => s.Category == "DramaAdd");
+            Assert.IsNotNull(addedShow, "The show was not added.");
+            Assert.AreEqual(show.Category, addedShow.Category);
         }
 
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Cleanup any movies added with a specific identifier
+            var testShows = _showRepository.GetAll()
+                .Where(m => m.Category.StartsWith("DramaAdd"));
+
+            foreach (var show in testShows)
+            {
+                _showRepository.Delete(show.ShowID);
+            }
+        }
+
+
         [TestMethod]
-        public void Delete_ShoulDeleteShowFromDatabase()
+        public void Delete_ShoulDeleteShowSuccessfully()
         {
             // Arrange
-            var showId = 25;
+            var show = new Show
+            {
+                Date = DateTime.Now,
+                Time = DateTime.Now,
+                Version = Version.VO,
+                ScreeningFormat = 2,
+                Category = "DramaToDelete",
+                RoomNumber = 1,
+                Movie = new Movie { MovieID = 17 }
+            };
+            _showRepository.Add(show);
+            var addedShow = _showRepository.GetAll().First(s => s.Category == "DramaToDelete");
 
             // Act
-            _repository.Delete(showId);
+            _showRepository.Delete(addedShow.RoomNumber);
 
-            // Assert: Here you would verify that the Add method invoked the expected SQL commands.
-            mockCommand.Verify(cmd => cmd.Parameters.AddWithValue("@ShowId", showId), Times.Once);
-            _mockCommand.Verify(cmd => cmd.ExecuteNonQuery(), Times.Once);
+            // Assert
+            var deletedShow = _showRepository.GetAll().FirstOrDefault(s => s.RoomNumber == addedShow.RoomNumber);
+            Assert.IsNull(deletedShow, "The show was not deleted.");
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Cleanup any movies added with a specific identifier
+            var testShows = _showRepository.GetAll()
+                .Where(m => m.Category.StartsWith("DramaToDelete"));
+
+            foreach (var show in testShows)
+            {
+                _showRepository.Delete(show.ShowID);
+            }
         }
 
         [TestMethod]
         public void GetById_ShouldReturnCorrectShow()
         {
             // Arrange
-            var showId = 21;
-            var expectedShow = new Show
+            var show = new Show
             {
-                Date = new DateTime(2019, 1, 12),
-                Version = 3,
-                ScreeningFormat = 1,
-                Category = "Europa Kino",
-                RoomNumber = 1
+                Date = DateTime.Now,
+                Time = DateTime.Now,
+                Version = Version.VO,
+                ScreeningFormat = 2,
+                Category = "DramaById",
+                RoomNumber = 1,
+                Movie = new Movie { MovieID = 18 }
             };
-
-            var mockReader = new Mock<SqlDataReader>();
-            mockReader.SetupSequence(reader => reader.Read())
-                      .Returns(true)
-                      .Returns(false); // Simulate a single row in the result set
-            mockReader.Setup(reader => reader["Date"]).Returns(expectedShow.Date);
-            mockReader.Setup(reader => reader["Version"]).Returns(expectedShow.Version);
-            mockReader.Setup(reader => reader["ScreeningFormat"]).Returns(expectedShow.ScreeningFormat);
-            mockReader.Setup(reader => reader["Category"]).Returns(expectedShow.Category);
-            mockReader.Setup(reader => reader["RoomNumber"]).Returns(expectedShow.RoomNumber);
+            _showRepository.Add(show);
+            var addedShow = _showRepository.GetAll().First(s => s.Category == "DramaById");
 
             // Act
-            var actualShow = repository.GetById(showId);
+            var retrievedShow = _showRepository.GetById(addedShow.RoomNumber);
 
             // Assert
-            Assert.IsNotNull(actualShow);
-            Assert.AreEqual(expectedShow.Date, actualShow.Date);
-            Assert.AreEqual(expectedShow.Version, actualShow.Version);
-            Assert.AreEqual(expectedShow.ScreeningFormat, actualShow.ScreeningFormat);
-            Assert.AreEqual(expectedShow.Category, actualShow.Category);
-            Assert.AreEqual(expectedShow.RoomNumber, actualShow.RoomNumber);
+            Assert.IsNotNull(retrievedShow, "The show was not retrieved.");
+            Assert.AreEqual(show.Category, retrievedShow.Category);
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Cleanup any movies added with a specific identifier
+            var testShows = _showRepository.GetAll()
+                .Where(m => m.Category.StartsWith("DramaById"));
+
+            foreach (var show in testShows)
+            {
+                _showRepository.Delete(show.ShowID);
+            }
+        }
+
+        [TestMethod]
+        public void Update_ShouldUpdateShowSuccessfully()
+        {
+            // Arrange
+            var originalShow = new Show
+            {
+                Date = DateTime.Now,
+                Time = DateTime.Now,
+                Version = Version.VO,
+                ScreeningFormat = 2,
+                Category = "DramaToUpdate",
+                RoomNumber = 1,
+            };
+            _showRepository.Add(originalShow);
+
+            // Retrieve the added movie to get its MovieID
+            var addedShow = _showRepository.GetAll().First(m => m.Category == "DramaToUpdate");
+
+            // Update movie details
+            var updatedShow = new Show
+            {
+                ShowId = addedShow.ShowId, // Ensure the ShowID is carried over
+                Date = new DateTime(2019, 1, 12),
+                Time = new DateTime(1, 1, 1, 15, 25, 0),
+                Version = Version.DB,
+                ScreeningFormat = 1,
+                Category = "DramaUpdated",
+                RoomNumber = 2
+            };
+
+            // Act
+            _showRepository.Update(updatedShow);
+
+            // Assert
+            var retrievedShow = _showRepository.GetById(addedShow.ShowID);
+            Assert.IsNotNull(retrievedShow, "The updated movie was not retrieved.");
+            Assert.AreEqual(updatedShow.Date, retrievedShow.Date, "Date was not updated correctly.");
+            Assert.AreEqual(updatedShow.Time, retrievedShow.Time, "Time was not updated correctly.");
+            Assert.AreEqual(updatedShow.Version, retrievedShow.Version, "Version was not updated correctly.");
+            Assert.AreEqual(updatedShow.ScreeningFormat, retrievedShow.ScreeningFormat, "ScreeningFormat was not updated correctly.");
+            Assert.AreEqual(updatedShow.Category, retrievedShow.Category, "Category was not updated correctly.");
+            Assert.AreEqual(updatedShow.RoomNumber, retrievedShow.RoomNumber, "RoomNumber was not updated correctly.");
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Cleanup any Shows added with a specific identifier
+            var testShows = _showRepository.GetAll()
+                .Where(m => m.Category.StartsWith("DramaUpdated"));
+
+            foreach (var show in testShows)
+            {
+                _showRepository.Delete(show.ShowId);
+            }
         }
 
         [TestMethod]
         public void GetAll_ShouldReturnAllShows()
         {
-            // Arrange
-            var expectedShows = new List<Show>
-    {
-        new Show
-        {
-                Date = new DateTime(2019, 1, 12),
-                Version = 3,
-                ScreeningFormat = 1,
-                Category = "Europa Kino",
-                RoomNumber = 1
-        },
-        new Show
-        {
-                Date = new DateTime(2019, 1, 24),
-                Version = 3,
-                ScreeningFormat = 1,
-                Category = "Drama",
-                RoomNumber = 2
-        },
-
-         new Show
-        {
-                Date = new DateTime(2019, 1, 12),
-                Version = 3,
-                ScreeningFormat = 1,
-                Category = "Drama",
-                RoomNumber = 3
-        },
-
-          new Show
-        {
-                Date = new DateTime(2019, 5, 23),
-                Version = 2,
-                ScreeningFormat = 1,
-                Category = "Børnebiffen",
-                RoomNumber = 1
-        },
-
-           new Show
-        {
-                Date = new DateTime(2019, 1, 25),
-                Version = 3,
-                ScreeningFormat = 3,
-                Category = "Action",
-                RoomNumber = 3
-        }
-    };
-
-            var mockReader = new Mock<SqlDataReader>();
-            mockReader.SetupSequence(reader => reader.Read())
-                      .Returns(true)
-                      .Returns(true)
-                      .Returns(false); // Simulate two rows in the result set
-
-            // First show
-            mockReader.Setup(reader => reader["Date"]).Returns(expectedShows[0].Date);
-            mockReader.Setup(reader => reader["Version"]).Returns(expectedShows[0].Version);
-            mockReader.Setup(reader => reader["ScreeningFormat"]).Returns(expectedShows[0].ScreeningFormat);
-            mockReader.Setup(reader => reader["Category"]).Returns(expectedShows[0].Category);
-            mockReader.Setup(reader => reader["RoomNumber"]).Returns(expectedShows[0].RoomNumber);
-
-            // Second show
-            mockReader.Setup(reader => reader["Date"]).Returns(expectedShows[0].Date);
-            mockReader.Setup(reader => reader["Version"]).Returns(expectedShows[0].Version);
-            mockReader.Setup(reader => reader["ScreeningFormat"]).Returns(expectedShows[0].ScreeningFormat);
-            mockReader.Setup(reader => reader["Category"]).Returns(expectedShows[0].Category);
-            mockReader.Setup(reader => reader["RoomNumber"]).Returns(expectedShows[0].RoomNumber);
-
-            // Third show
-            mockReader.Setup(reader => reader["Date"]).Returns(expectedShows[0].Date);
-            mockReader.Setup(reader => reader["Version"]).Returns(expectedShows[0].Version);
-            mockReader.Setup(reader => reader["ScreeningFormat"]).Returns(expectedShows[0].ScreeningFormat);
-            mockReader.Setup(reader => reader["Category"]).Returns(expectedShows[0].Category);
-            mockReader.Setup(reader => reader["RoomNumber"]).Returns(expectedShows[0].RoomNumber);
-
-            // Fourth show
-            mockReader.Setup(reader => reader["Date"]).Returns(expectedShows[0].Date);
-            mockReader.Setup(reader => reader["Version"]).Returns(expectedShows[0].Version);
-            mockReader.Setup(reader => reader["ScreeningFormat"]).Returns(expectedShows[0].ScreeningFormat);
-            mockReader.Setup(reader => reader["Category"]).Returns(expectedShows[0].Category);
-            mockReader.Setup(reader => reader["RoomNumber"]).Returns(expectedShows[0].RoomNumber);
-
-            // Fifth show
-            mockReader.Setup(reader => reader["Date"]).Returns(expectedShows[0].Date);
-            mockReader.Setup(reader => reader["Version"]).Returns(expectedShows[0].Version);
-            mockReader.Setup(reader => reader["ScreeningFormat"]).Returns(expectedShows[0].ScreeningFormat);
-            mockReader.Setup(reader => reader["Category"]).Returns(expectedShows[0].Category);
-            mockReader.Setup(reader => reader["RoomNumber"]).Returns(expectedShows[0].RoomNumber);
-
             // Act
-            var actualShows = repository.GetAll().ToList();
+            var shows = _showRepository.GetAll();
 
             // Assert
-            Assert.AreEqual(expectedShows.Count, actualShows.Count);
-            for (int i = 0; i < expectedShows.Count; i++)
-            {
-                Assert.AreEqual(expectedShows[i].Date, actualShows[i].Date);
-                Assert.AreEqual(expectedShows[i].Version, actualShows[i].Version);
-                Assert.AreEqual(expectedShows[i].ScreeningFormat, actualShows[i].ScreeningFormat);
-                Assert.AreEqual(expectedShows[i].Category, actualShows[i].Category);
-                Assert.AreEqual(expectedShows[i].RoomNumber, actualShows[i].RoomNumber);
-            }
+            Assert.IsNotNull(shows, "The show list should not be null.");
+            Assert.IsTrue(shows.Any(), "The show list should not be empty.");
         }
-
-
     }
-
 }
+
+
+    
