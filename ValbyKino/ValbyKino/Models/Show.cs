@@ -1,4 +1,6 @@
-﻿namespace ValbyKino.Models
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace ValbyKino.Models
 {
     public enum Version
     {
@@ -21,7 +23,8 @@
         public int ShowID { get; set; }
         public int Admissions { get; set; }
         public int Price { get; set; } = 0;
-        public string YA { get; set; } = " ";
+        private string ya;
+        public string YA { get; set; }
 
         public Show(DateTime date, DateTime time, Version version, string screeningFormat, string category, int roomNumber)
         {
@@ -31,7 +34,7 @@
             Category = category;
             RoomNumber = roomNumber;
             Time = time;
-            if (category.Equals("Børnebiffen")) YA = "1";
+            //if (category.Equals("Børnebiffen")) YA = "1";
         }
 
         public Show(DateTime date, DateTime time, Version version, string screeningFormat, string category, int roomNumber, Movie movie)

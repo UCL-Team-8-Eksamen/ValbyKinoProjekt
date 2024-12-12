@@ -22,16 +22,18 @@ namespace ValbyKino.ViewModels
         IRepository<Show> showRepository = new ShowRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
 
         Datahandler datahandler = new Datahandler("movies.csv");
+        //Datahandler2 dh2 = new Datahandler2();
         public ObservableCollection<Movie> Movies { get; set; }
         public MovieViewModel()
         {
             ObservableCollection<Show> shows = (ObservableCollection<Show>)showRepository.GetAll();
             ObservableCollection<Movie> movies = (ObservableCollection<Movie>)movieRepository.GetAll();
-            datahandler.PrintMovies(movies, shows);
+            datahandler.PrintToCSV(movies, shows);
 
             ObservableCollection<Show> shows2 = (ObservableCollection<Show>)movieRepository.GetShowsByMovie(movies[1]);
-            
 
+            //dh2.ConvertToExcel("movies.csv");
+            //dh2.Convert_CSV_To_Excel("movies.csv");
 
 
             //Movie Wicked = new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false);
