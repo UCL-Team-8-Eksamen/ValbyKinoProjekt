@@ -13,7 +13,7 @@ namespace ValbyKino.ViewModels
         public DateTime Time { get; set; }
         public Version Version { get; set; }
         //int?
-        public int ScreeningFormat { get; set; }
+        public string ScreeningFormat { get; set; }
         public string Category { get; set; }
         public int RoomNumber { get; set; }
         public ObservableCollection<Movie> Movies { get; set; }
@@ -24,7 +24,7 @@ namespace ValbyKino.ViewModels
         public ShowViewModel()
         {
             Shows = (ObservableCollection<Show>)showRepository.GetAll();
-            showRepository.Add(new Show(DateTime.Now, DateTime.Now, Version.ST, 2, "Forpremiere", 2));
+            showRepository.Add(new Show(DateTime.Now, DateTime.Now, Version.ST, "2", "Forpremiere", 2));
             //movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
             //Movies.Add(new Movie("Crossing", "En Kvinde i Istanbul", "Levan", "Akin", "TR", DateTime.Now, false));
             //Movies.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));

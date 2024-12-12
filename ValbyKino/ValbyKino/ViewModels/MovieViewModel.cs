@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using ValbyKino.Models;
 
 namespace ValbyKino.ViewModels
@@ -16,10 +17,25 @@ namespace ValbyKino.ViewModels
         public DateTime NationalReleaseDate { get; set; }
         public bool AlternativeContent { get; set; }
         IRepository<Movie> movieRepository = new MovieRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
-        
+
+        //test
+        IRepository<Show> showRepository = new ShowRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
+
+        Datahandler datahandler = new Datahandler("movies.csv");
+        //Datahandler2 dh2 = new Datahandler2();
         public ObservableCollection<Movie> Movies { get; set; }
         public MovieViewModel()
         {
+            ObservableCollection<Show> shows = (ObservableCollection<Show>)showRepository.GetAll();
+            ObservableCollection<Movie> movies = (ObservableCollection<Movie>)movieRepository.GetAll();
+            datahandler.PrintToCSV(movies, shows);
+
+            ObservableCollection<Show> shows2 = (ObservableCollection<Show>)movieRepository.GetShowsByMovie(movies[1]);
+
+            //dh2.ConvertToExcel("movies.csv");
+            //dh2.Convert_CSV_To_Excel("movies.csv");
+
+
             //Movie Wicked = new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false);
             Movies = (ObservableCollection<Movie>)movieRepository.GetAll();
             //movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
