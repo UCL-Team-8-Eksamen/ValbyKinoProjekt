@@ -30,7 +30,7 @@ namespace ValbyKino.ViewModels
             ObservableCollection<Movie> movies = (ObservableCollection<Movie>)movieRepository.GetAll();
             datahandler.PrintToCSV(movies, shows);
 
-            ObservableCollection<Show> shows2 = (ObservableCollection<Show>)movieRepository.GetShowsByMovie(movies[1]);
+            //ObservableCollection<Show> shows2 = (ObservableCollection<Show>)movieRepository.GetShowsByMovie(movies[1]);
 
             //dh2.ConvertToExcel("movies.csv");
             //dh2.Convert_CSV_To_Excel("movies.csv");

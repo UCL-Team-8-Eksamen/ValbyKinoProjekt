@@ -14,6 +14,6 @@ namespace ValbyKino.Models
         //void Update(T entity);
         void Delete(int id);
 
-        IEnumerable<Show> GetShowsByMovie(Movie movie);
+        //IEnumerable<Show> GetShowsByMovie(Movie movie);
     }
 }
