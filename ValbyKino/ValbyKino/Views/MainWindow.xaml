@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Valby Kino Billetsystem" Height="600" Width="1200"
         Background="#FFFDD0">
-    <Window.DataContext>
-        <local:MainWindowViewModel />
-    </Window.DataContext>
+    <!--<Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>-->
     <Grid>
         <!-- Layout with two columns -->
         <Grid.ColumnDefinitions>
