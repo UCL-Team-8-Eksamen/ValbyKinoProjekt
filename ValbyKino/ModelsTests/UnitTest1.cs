@@ -6,11 +6,11 @@ namespace ModelTest
 {
     [TestClass]
 
-    //Testing the Diector class for initializing properties
+    //Testing the Movie class for initializing properties
     public class MovieTest
     {
         [TestMethod]
-        public void Constructor_ShouldInitializeDirectorCorrectly()
+        public void Constructor_ShouldInitializeMovieCorrectly()
         {
             // Arrange
             string originalTitle = "A casa tutti bene";
