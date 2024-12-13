@@ -21,13 +21,15 @@ namespace ValbyKino.Models
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("uspCreateMovie", connection);
+                SqlCommand command = new SqlCommand("uspCreateShow", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@Date", show.Date);
-                command.Parameters.AddWithValue("@Version", show.Version);
+                command.Parameters.AddWithValue("@Time", show.Time);
+                command.Parameters.AddWithValue("@Version", show.Version.ToString());
                 command.Parameters.AddWithValue("@ScreeningFormat", show.ScreeningFormat);
                 command.Parameters.AddWithValue("@Category", show.Category);
                 command.Parameters.AddWithValue("@RoomNumber", show.RoomNumber);
+                command.Parameters.AddWithValue("@MovieID", show.Movie.MovieID);
                 command.ExecuteNonQuery();
                 connection.Close();
 
@@ -65,11 +67,13 @@ namespace ValbyKino.Models
                         shows.Add(new Show
                         {
                             Date = (DateTime)reader["Date"],
-                            Version = (Version)reader["Version"],
-                            ScreeningFormat = (int)reader["ScreeningFormat"],
+                            Version = (Version)Enum.Parse(typeof(Version), (string)reader["Version"]),
+                            ScreeningFormat = (string)reader["ScreeningFormat"],
                             Category = (string)reader["Category"],
                             RoomNumber = (int)reader["RoomNumber"],
-                            Movie = movieRepository.GetById((int)reader["MovieId"])
+                            Movie = movieRepository.GetById((int)reader["MovieId"]),
+                            Admissions = (int)reader["Admissions"],
+                            Price = (int)reader["Price"]
                         });
                     }
                 }
@@ -98,7 +102,7 @@ namespace ValbyKino.Models
                         {
                             Date = (DateTime)reader["Date"],
                             Version = (Version)reader["Version"],
-                            ScreeningFormat = (int)reader["ScreeningFormat"],
+                            ScreeningFormat = (string)reader["ScreeningFormat"],
                             Category = (string)reader["Category"],
                             RoomNumber = (int)reader["RoomNumber"],
                             Movie = movieRepository.GetById((int)reader["MovieId"])
@@ -107,11 +111,44 @@ namespace ValbyKino.Models
                 }
                 return show;
             }
-
-            //public void Update(Show entity)
-            //{
-            //    throw new NotImplementedException();
-            //}
         }
+
+        //public IEnumerable<Show> GetShowsByMovie(Movie movie)
+        //{
+        //    var shows = new ObservableCollection<Show>();
+        //    using (SqlConnection connection = new SqlConnection(_connectionString))
+        //    {
+        //        connection.Open();
+        //        SqlCommand command = new SqlCommand("uspShowsFromMovie", connection);
+        //        command.CommandType = CommandType.StoredProcedure;
+        //        command.Parameters.AddWithValue("@MovieID", movie.MovieID);
+        //        command.ExecuteNonQuery();
+
+        //        using (SqlDataReader reader = command.ExecuteReader())
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                shows.Add(new Show
+        //                {
+        //                    Date = (DateTime)reader["Date"],
+        //                    Version = (Version)Enum.Parse(typeof(Version), (string)reader["Version"]),
+        //                    ScreeningFormat = (string)reader["ScreeningFormat"],
+        //                    Category = (string)reader["Category"],
+        //                    RoomNumber = (int)reader["RoomNumber"],
+        //                    Movie = movieRepository.GetById((int)reader["MovieId"]),
+        //                    Admissions = (int)reader["Admissions"],
+        //                    Price = (int)reader["Price"]
+        //                });
+        //            }
+        //        }
+        //    }
+
+        //    return shows;
+        //}
+
+        //public void Update(Show entity)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
-}
+
