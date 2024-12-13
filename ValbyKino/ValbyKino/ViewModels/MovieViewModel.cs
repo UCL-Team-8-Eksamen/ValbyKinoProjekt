@@ -26,18 +26,7 @@ namespace ValbyKino.ViewModels
         public ObservableCollection<Movie> Movies { get; set; }
         public MovieViewModel()
         {
-            ObservableCollection<Show> shows = (ObservableCollection<Show>)showRepository.GetAll();
-            ObservableCollection<Movie> movies = (ObservableCollection<Movie>)movieRepository.GetAll();
-            report.PrintToCSV(movies, shows);
 
-            //ObservableCollection<Show> shows2 = (ObservableCollection<Show>)movieRepository.GetShowsByMovie(movies[1]);
-
-            //dh2.ConvertToExcel("movies.csv");
-            //dh2.Convert_CSV_To_Excel("movies.csv");
-
-
-            //Movie Wicked = new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false);
-            Movies = (ObservableCollection<Movie>)movieRepository.GetAll();
             //movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
             //Movies.Add(new Movie("Crossing", "En Kvinde i Istanbul", "Levan", "Akin", "TR", DateTime.Now, false));
             //Movies.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));

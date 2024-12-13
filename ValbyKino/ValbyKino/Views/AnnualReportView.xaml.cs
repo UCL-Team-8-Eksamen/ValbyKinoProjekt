@@ -4,15 +4,14 @@ using ValbyKino.ViewModels;
 namespace ValbyKino.Views
 {
     /// <summary>
-    /// Interaction logic for ShowView.xaml
+    /// Interaction logic for AnnualRaportView.xaml
     /// </summary>
-    public partial class ShowView : Page
+    public partial class AnnualReportView : Page
     {
-        public ShowView()
+        public AnnualReportView()
         {
             InitializeComponent();
-            DataContext = new ShowViewModel();
-
+            DataContext = new AnnualReportViewModel();
         }
     }
 }
