@@ -32,7 +32,8 @@
                 <DataGridTextColumn Header="Tid" Width="*" Binding="{Binding Tid}"/>
                 <DataGridTextColumn Header="Version" Width="*" Binding="{Binding Version}"/>
                 <DataGridTextColumn Header="Format" Width="*" Binding="{Binding Format}"/>
-                <DataGridTextColumn Header="Kategori" Width="*" Binding="{Binding Kategori}"/>
+                <DataGridTextColumn Header="Kategori" Width="*" Binding="{Binding Category}"/>
+                <DataGridTextColumn Header="Kategori" Width="*" Binding="{Binding Price}"/>
                 <DataGridTextColumn Header="Original Titel" Width="*" Binding="{Binding OriginalTitel}"/>
                 <DataGridTextColumn Header="Lokal Titel" Width="*" Binding="{Binding LokalTitel}"/>
                 <DataGridTextColumn Header="Instruktørens Fornavn" Width="*" Binding="{Binding InstruktorFornavn}"/>
