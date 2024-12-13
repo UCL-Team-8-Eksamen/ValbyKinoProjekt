@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using ValbyKino.ViewModels;
 
 namespace ValbyKino
 {
@@ -10,7 +11,7 @@ namespace ValbyKino
         public MainWindow()
         {
             InitializeComponent();
-
+            DataContext = new MainWindowViewModel();
 
         }
 
