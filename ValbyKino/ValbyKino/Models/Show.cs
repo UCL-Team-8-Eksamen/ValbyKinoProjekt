@@ -1,6 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace ValbyKino.Models
+﻿namespace ValbyKino.Models
 {
     public enum Version
     {
@@ -21,12 +19,14 @@ namespace ValbyKino.Models
         public int RoomNumber { get; set; }
         public Movie Movie { get; set; }
         public int ShowID { get; set; }
-        public int Admissions { get; set; }
-        public int Price { get; set; } = 0;
+        public double Admissions { get; set; }
+        public double Price { get; set; } = 0;
         private string ya;
+        private int screeningFormat;
+
         public string YA { get; set; }
 
-        public Show(DateTime date, DateTime time, Version version, string screeningFormat, string category, int roomNumber)
+        public Show(DateTime date, DateTime time, Version version, string screeningFormat, string category, int roomNumber, double price)
         {
             Date = date;
             Time = time;
@@ -35,6 +35,7 @@ namespace ValbyKino.Models
             Category = category;
             RoomNumber = roomNumber;
             Time = time;
+            Price = price;
             //if (category.Equals("Børnebiffen")) YA = "1";
         }
 
@@ -49,7 +50,10 @@ namespace ValbyKino.Models
             Movie = movie;
         }
 
+
         public Show()
         { }
+
+
     }
 }

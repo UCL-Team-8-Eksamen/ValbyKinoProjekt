@@ -73,7 +73,7 @@ namespace ValbyKino.Models
                             RoomNumber = (int)reader["RoomNumber"],
                             Movie = movieRepository.GetById((int)reader["MovieId"]),
                             Admissions = (int)reader["Admissions"],
-                            Price = (int)reader["Price"]
+                            Price = (double)reader["Price"]
                         });
                     }
                 }
@@ -151,4 +151,5 @@ namespace ValbyKino.Models
         //    throw new NotImplementedException();
         //}
     }
+}
 

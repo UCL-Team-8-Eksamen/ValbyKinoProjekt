@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ValbyKino.Models
 {
@@ -32,8 +27,8 @@ namespace ValbyKino.Models
                     }
                 }
 
-                int admissions = 0;
-                int boxoffice = 0;
+                double admissions = 0;
+                double boxoffice = 0;
                 string ya = " ";
                 double totalshows = 0;
                 string altcontent = " ";
@@ -47,11 +42,11 @@ namespace ValbyKino.Models
                     totalshows = Math.Ceiling((shows.Last().Date - shows[0].Date).TotalDays / 7);
                 }
                 if (shows[0].Movie.AlternativeContent == true) altcontent = "1";
-                    for (int j = 0; j < shows.Count; j++)
-                    {
-                        admissions += shows[j].Admissions;
-                        boxoffice += shows[j].Admissions * shows[j].Price;
-                    }
+                for (int j = 0; j < shows.Count; j++)
+                {
+                    admissions += shows[j].Admissions;
+                    boxoffice += shows[j].Admissions * shows[j].Price;
+                }
 
                 sw.WriteLine($"{movies[i].OriginalTitle}, {movies[i].LocalTitle}, {movies[i].DirectorFirstName}, {movies[i].DirectorLastName}, {movies[i].OriginalCountry}, {movies[i].NationalReleaseDate.ToString("dd-MM-yyyy")}, {shows[0].Date.ToString("dd-MM-yyyy")}, {shows[0].Version.ToString()}, {shows[0].ScreeningFormat.ToString()}, , {altcontent}, {totalshows}, {shows.Count}, {admissions}, {boxoffice}, {ya}");
             }
