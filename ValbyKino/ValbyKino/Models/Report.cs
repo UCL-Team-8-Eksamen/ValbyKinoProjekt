@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace ValbyKino.Models
 {
-    public class Datahandler
+    public class Report
     {
         public string FileName { get; set; }
-        public Datahandler(string fileName)
+        public Report(string fileName)
         {
             FileName = fileName;
         }
