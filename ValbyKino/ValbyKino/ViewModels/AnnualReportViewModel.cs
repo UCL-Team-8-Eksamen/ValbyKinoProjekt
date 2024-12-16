@@ -22,6 +22,7 @@ namespace ValbyKino.ViewModels
             //Movies.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
             //Movies.Add(new Movie("Foredrag: Videnskaben bag øl", "Foredrag: Videnskaben bag øl", "", "", "DK", DateTime.Now, true));
             report.PrintToCSV((ObservableCollection<Movie>)movieRepository.GetAll(), (ObservableCollection<Show>)showRepository.GetAll());
+            ReportList = report.ReadFromCSV();
         }
 
         private ICollectionView reportCcollectionView;

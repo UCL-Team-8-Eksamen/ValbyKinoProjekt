@@ -36,17 +36,20 @@ namespace ValbyKino.Models
             ObservableCollection<Report> reportList = new ObservableCollection<Report>();
             using (StreamReader reader = new StreamReader(FileName))
             {
+                string headerLine = reader.ReadLine();
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     var parts = line.Split(',');
+                    bool altContent = false;
+                    if (parts[10] == "1") altContent = true;
                     Show show = new Show
                     {
                         Date = DateTime.Parse(parts[6]),
                         Version = (Version)Enum.Parse(typeof(Version), parts[7]),
                         ScreeningFormat = parts[8],
                         YA = parts[15],
-                        Movie = new Movie(parts[0], parts[1], parts[2], parts[3], parts[4], DateTime.Parse(parts[5]), bool.Parse(parts[10])),
+                        Movie = new Movie(parts[0], parts[1], parts[2], parts[3], parts[4], DateTime.Parse(parts[5]), altContent),
                     };
                     Report report = new Report(show, int.Parse(parts[11]), int.Parse(parts[12]), double.Parse(parts[14]), int.Parse(parts[13]));
                     reportList.Add(report);
