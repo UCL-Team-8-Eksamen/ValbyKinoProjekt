@@ -25,22 +25,27 @@
        </StackPanel>
 
         <!-- Tabel -->
-        <DataGrid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,100,10,10" 
+        <DataGrid ItemsSource="{Binding ReportList}" 
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,100,10,10" 
                   AutoGenerateColumns="False" HeadersVisibility="Column" Background="White" FontSize="12">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Dato" Width="*" Binding="{Binding Dato}"/>
-                <DataGridTextColumn Header="Tid" Width="*" Binding="{Binding Tid}"/>
-                <DataGridTextColumn Header="Version" Width="*" Binding="{Binding Version}"/>
-                <DataGridTextColumn Header="Format" Width="*" Binding="{Binding Format}"/>
-                <DataGridTextColumn Header="Kategori" Width="*" Binding="{Binding Category}"/>
-                <DataGridTextColumn Header="Kategori" Width="*" Binding="{Binding Price}"/>
-                <DataGridTextColumn Header="Original Titel" Width="*" Binding="{Binding OriginalTitel}"/>
-                <DataGridTextColumn Header="Lokal Titel" Width="*" Binding="{Binding LokalTitel}"/>
-                <DataGridTextColumn Header="Instruktørens Fornavn" Width="*" Binding="{Binding InstruktorFornavn}"/>
-                <DataGridTextColumn Header="Instruktørens Efternavn" Width="*" Binding="{Binding InstruktorEfternavn}"/>
-                <DataGridTextColumn Header="Oprindelsesland" Width="*" Binding="{Binding Oprindelsesland}"/>
-                <DataGridTextColumn Header="National Premieredato" Width="*" Binding="{Binding NationalPremieredato}"/>
-                <DataGridTextColumn Header="Alternative Content" Width="*" Binding="{Binding AlternativeContent}"/>
+                <DataGridTextColumn Header="Originaltitel" Width="*" Binding="{Binding Show.Movie.OriginalTitle}"/>
+                <DataGridTextColumn Header="Lokaltitel" Width="*" Binding="{Binding Show.Movie.LocalTitle}"/>
+                <DataGridTextColumn Header="Instruktør fornavn" Width="*" Binding="{Binding Show.Movie.DirectorFirstName}"/>
+                <DataGridTextColumn Header="Instruktør efternavn" Width="*" Binding="{Binding Show.Movie.DirectorLastName}"/>
+                <DataGridTextColumn Header="Hovednationalitet" Width="*" Binding="{Binding Show.Movie.OriginalCountry}"/>
+                <DataGridTextColumn Header="National udgivelse" Width="*" Binding="{Binding Show.Movie.NationalReleaseDate}"/>
+                <DataGridTextColumn Header="Første udgivelse i Valby Kino" Width="*" Binding="{Binding Show.Date}"/>
+                <DataGridTextColumn Header="VO/DB/ST" Width="*" Binding="{Binding Show.Version}"/>
+                <DataGridTextColumn Header="Screening format" Width="*" Binding="{Binding Show.ScreeningFormat}"/>
+                <DataGridTextColumn Header="3D" Width="*" Binding="{Binding Is3D}"/>
+                <DataGridTextColumn Header="Alternativt indhold" Width="*" Binding="{Binding Show.Movie.AlternativeContent}"/>
+                <DataGridTextColumn Header="Antal uger" Width="*" Binding="{Binding AmountOfWeeks}"/>
+                <DataGridTextColumn Header="Antal forestillinger" Width="*" Binding="{Binding TotalScreenings}"/>
+                <DataGridTextColumn Header="Billetter solgt" Width="*" Binding="{Binding Admissions}"/>
+                <DataGridTextColumn Header="Billetindtægt" Width="*" Binding="{Binding BoxOffice}"/>
+                <DataGridTextColumn Header="YA" Width="*" Binding="{Binding Show.YA}"/>
+                
             </DataGrid.Columns>
         </DataGrid>
 

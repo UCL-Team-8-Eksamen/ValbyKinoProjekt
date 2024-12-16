@@ -73,7 +73,7 @@ namespace ValbyKino.Models
                             RoomNumber = (int)reader["RoomNumber"],
                             Movie = movieRepository.GetById((int)reader["MovieId"]),
                             Admissions = (int)reader["Admissions"],
-                            Price = (double)reader["Price"]
+                            Price = (int)reader["Price"]
                         });
                     }
                 }

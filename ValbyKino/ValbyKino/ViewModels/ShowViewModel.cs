@@ -23,20 +23,21 @@ namespace ValbyKino.ViewModels
 
         // ?? Hvad gør den her kode ??
         // Opretter et repository for film, som bruges til at hente og manipulere data
-        IRepository<Movie> showRepository = new MovieRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
+        IRepository<Show> showRepository = new ShowRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
 
         public ShowViewModel()
         {
+            Shows = (ObservableCollection<Show>)showRepository.GetAll();
             // Initialiserer listen over shows ved at hente data fra repository
-            try
-            {
-                Shows = new ObservableCollection<Show>((IEnumerable<Show>)showRepository.GetAll());
-            }
-            catch (Exception ex)
-            {
-                // Log fejl, hvis data ikke kan hentes
-                Console.WriteLine($"Fejl under indlæsning af shows: {ex.Message}");
-            }
+            //try
+            //{
+            //    Shows = (ObservableCollection<Show>)showRepository.GetAll();
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Log fejl, hvis data ikke kan hentes
+            //    Console.WriteLine($"Fejl under indlæsning af shows: {ex.Message}");
+            //}
 
             // movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
             // Movies.Add(new Movie("Crossing", "En Kvinde i Istanbul", "Levan", "Akin", "TR", DateTime.Now, false));
