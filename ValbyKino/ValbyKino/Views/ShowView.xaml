@@ -92,7 +92,7 @@
             </Grid>
 
             <!-- DataGrid -->
-            <DataGrid ItemsSource="{Binding Screenings}" 
+            <DataGrid ItemsSource="{Binding Shows}" 
                       SelectedItem="{Binding SelectedScreening}"
                       AutoGenerateColumns="False" FontWeight="Bold" HeadersVisibility="Column" 
                       Background="White" BorderBrush="#6B8E23" BorderThickness="1" 
@@ -104,7 +104,7 @@
                     <DataGridTextColumn Header="Dato" Binding="{Binding Date}" Width="*" />
                     <DataGridTextColumn Header="Tid" Binding="{Binding Time}" Width="*" />
                     <DataGridTextColumn Header="Version" Binding="{Binding Version}" Width="*" />
-                    <DataGridTextColumn Header="Format" Binding="{Binding Format}" Width="*" />
+                    <DataGridTextColumn Header="Format" Binding="{Binding ScreeningFormat}" Width="*" />
                     <DataGridTextColumn Header="Kategori" Binding="{Binding Category}" Width="*" />
                     <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="*" />
                 </DataGrid.Columns>
