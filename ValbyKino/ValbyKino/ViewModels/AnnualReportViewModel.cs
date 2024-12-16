@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using DocumentFormat.OpenXml;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using ValbyKino.Models;
 
@@ -36,5 +37,12 @@ namespace ValbyKino.ViewModels
                 OnPropertyChanged(nameof(ReportCollectionView));
             }
         }
+
+        private void DownloadReport()
+        {
+            report.PrintToCSV((ObservableCollection<Movie>)movieRepository.GetAll(), (ObservableCollection<Show>)showRepository.GetAll());
+        }
+
+        public RelayCommand DownloadReportCommand => new RelayCommand(execute => DownloadReport());
     }
 }
