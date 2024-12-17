@@ -34,7 +34,6 @@
             ScreeningFormat = screeningFormat;
             Category = category;
             RoomNumber = roomNumber;
-            Time = time;
             Price = price;
             //if (category.Equals("Børnebiffen")) YA = "1";
         }

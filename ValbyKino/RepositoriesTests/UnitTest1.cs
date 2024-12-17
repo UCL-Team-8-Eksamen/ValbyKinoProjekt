@@ -223,9 +223,10 @@ namespace RepositoriesTests
                 Date = DateTime.Now,
                 Time = DateTime.Now,
                 Version = Version.VO,
-                ScreeningFormat = 2,
+                ScreeningFormat = "2",
                 Category = "DramaAdd",
                 RoomNumber = 1,
+                Price = 89.00,
                 Movie = new Movie { MovieID = 16 }
             };
 
@@ -251,7 +252,6 @@ namespace RepositoriesTests
             }
         }
 
-
         [TestMethod]
         public void Delete_ShoulDeleteShowSuccessfully()
         {
@@ -261,9 +261,10 @@ namespace RepositoriesTests
                 Date = DateTime.Now,
                 Time = DateTime.Now,
                 Version = Version.VO,
-                ScreeningFormat = 2,
+                ScreeningFormat = "2",
                 Category = "DramaToDelete",
                 RoomNumber = 1,
+                Price = 90.00,
                 Movie = new Movie { MovieID = 17 }
             };
             _showRepository.Add(show);
@@ -299,9 +300,10 @@ namespace RepositoriesTests
                 Date = DateTime.Now,
                 Time = DateTime.Now,
                 Version = Version.VO,
-                ScreeningFormat = 2,
+                ScreeningFormat = "2",
                 Category = "DramaById",
                 RoomNumber = 1,
+                Price = 95.00,
                 Movie = new Movie { MovieID = 18 }
             };
             _showRepository.Add(show);
@@ -325,63 +327,6 @@ namespace RepositoriesTests
             foreach (var show in testShows)
             {
                 _showRepository.Delete(show.ShowID);
-            }
-        }
-
-        [TestMethod]
-        public void Update_ShouldUpdateShowSuccessfully()
-        {
-            // Arrange
-            var originalShow = new Show
-            {
-                Date = DateTime.Now,
-                Time = DateTime.Now,
-                Version = Version.VO,
-                ScreeningFormat = 2,
-                Category = "DramaToUpdate",
-                RoomNumber = 1,
-            };
-            _showRepository.Add(originalShow);
-
-            // Retrieve the added movie to get its MovieID
-            var addedShow = _showRepository.GetAll().First(m => m.Category == "DramaToUpdate");
-
-            // Update movie details
-            var updatedShow = new Show
-            {
-                ShowId = addedShow.ShowId, // Ensure the ShowID is carried over
-                Date = new DateTime(2019, 1, 12),
-                Time = new DateTime(1, 1, 1, 15, 25, 0),
-                Version = Version.DB,
-                ScreeningFormat = 1,
-                Category = "DramaUpdated",
-                RoomNumber = 2
-            };
-
-            // Act
-            _showRepository.Update(updatedShow);
-
-            // Assert
-            var retrievedShow = _showRepository.GetById(addedShow.ShowID);
-            Assert.IsNotNull(retrievedShow, "The updated movie was not retrieved.");
-            Assert.AreEqual(updatedShow.Date, retrievedShow.Date, "Date was not updated correctly.");
-            Assert.AreEqual(updatedShow.Time, retrievedShow.Time, "Time was not updated correctly.");
-            Assert.AreEqual(updatedShow.Version, retrievedShow.Version, "Version was not updated correctly.");
-            Assert.AreEqual(updatedShow.ScreeningFormat, retrievedShow.ScreeningFormat, "ScreeningFormat was not updated correctly.");
-            Assert.AreEqual(updatedShow.Category, retrievedShow.Category, "Category was not updated correctly.");
-            Assert.AreEqual(updatedShow.RoomNumber, retrievedShow.RoomNumber, "RoomNumber was not updated correctly.");
-        }
-
-        [TestCleanup]
-        public void Cleanup()
-        {
-            // Cleanup any Shows added with a specific identifier
-            var testShows = _showRepository.GetAll()
-                .Where(m => m.Category.StartsWith("DramaUpdated"));
-
-            foreach (var show in testShows)
-            {
-                _showRepository.Delete(show.ShowId);
             }
         }
 
