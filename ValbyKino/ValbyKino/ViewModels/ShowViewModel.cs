@@ -18,10 +18,11 @@ namespace ValbyKino.ViewModels
 
         public double Price { get; set; } //Prisen på filmforestillingen
 
+        public int Admissions { get; set; } = 0;
+
         public ObservableCollection<Movie> Movies { get; set; } = new ObservableCollection<Movie>(); // Liste over film
         public ObservableCollection<Show> Shows { get; set; } // Liste over Forestillinger
 
-        // ?? Hvad gør den her kode ??
         // Opretter et repository for film, som bruges til at hente og manipulere data
         IRepository<Show> showRepository = new ShowRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
 
@@ -39,10 +40,6 @@ namespace ValbyKino.ViewModels
             //    Console.WriteLine($"Fejl under indlæsning af shows: {ex.Message}");
             //}
 
-            // movieRepository.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
-            // Movies.Add(new Movie("Crossing", "En Kvinde i Istanbul", "Levan", "Akin", "TR", DateTime.Now, false));
-            // Movies.Add(new Movie("Wicked", "Wicked", "John", "Chu", "US", DateTime.Now, false));
-            // Movies.Add(new Movie("Foredrag: Videnskaben bag øl", "Foredrag: Videnskaben bag øl", "", "", "DK", DateTime.Now, true));
         }
 
         private Show selectedItem; // Det valgte element i UI
@@ -62,7 +59,7 @@ namespace ValbyKino.ViewModels
             // Shows er samlingen
             // Add er metoden
             // new Show kalder konstruktøren med de nødvendige parametre
-            Shows.Add(new Show(Date, Time, Version, ScreeningFormat.ToString(), Category, RoomNumber, Price));
+            Shows.Add(new Show(Date, Time, Version, ScreeningFormat.ToString(), Category, RoomNumber, Price, Admissions));
         }
 
         private void DeleteShow()

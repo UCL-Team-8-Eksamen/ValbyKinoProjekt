@@ -7,24 +7,23 @@ namespace ValbyKino.Models
     {
         public string FileName { get; set; }
         public Show Show { get; set; }
-        //public DateTime FirstRelease { get; set; }
         public int AmountOfWeeks { get; set; }
         public int TotalScreenings { get; set; }
         public double BoxOffice { get; set; }
         public double Admissions { get; set; }
         public string Is3D = " ";
         
-        public ObservableCollection<Report> Movies { get; set; } = new ObservableCollection<Report>();
+        public ObservableCollection<Report> ReportList { get; set; }
 
         public Report(string fileName)
         {
+            ReportList = new ObservableCollection<Report>();
             FileName = fileName;
         }
 
         public Report(Show show, int weeks, int screenings, double boxoffice, int admissions)
         {
             Show = show;
-            //FirstRelease = firstRelease;
             AmountOfWeeks = weeks;
             TotalScreenings = screenings;
             BoxOffice = boxoffice;

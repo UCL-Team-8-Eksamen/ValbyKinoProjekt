@@ -20,7 +20,6 @@ namespace ValbyKino.Models
         public DateTime NationalReleaseDate { get; set; }
         public bool AlternativeContent { get; set; }
         public static int NextID = 11;
-        public ObservableCollection<Show> Shows { get; set; } = new ObservableCollection<Show>();
 
         public Movie(string originalTitle, string localTitle, string firstName, string lastName, string nationality, DateTime releaseDate, bool alternativeContent)
         {
@@ -35,19 +34,6 @@ namespace ValbyKino.Models
             NextID++;
         }
 
-        public Movie(string originalTitle, string localTitle, string firstName, string lastName, string nationality, DateTime releaseDate, bool alternativeContent, ObservableCollection<Show> shows)
-        {
-            OriginalTitle = originalTitle;
-            LocalTitle = localTitle;
-            DirectorFirstName = firstName;
-            DirectorLastName = lastName;
-            OriginalCountry = nationality;
-            NationalReleaseDate = releaseDate;
-            AlternativeContent = alternativeContent;
-            MovieID = NextID;
-            NextID++;
-            Shows = shows;
-        }
 
         public Movie()
         {
