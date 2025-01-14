@@ -17,7 +17,7 @@
         public string Category { get; set; }
         public int RoomNumber { get; set; }
         public Movie Movie { get; set; }
-        public int ShowID { get; set; }
+        public int ShowID { get; set; } = 0;
         public double Admissions { get; set; } = 0;
         public double Price { get; set; } = 0;
 
@@ -45,6 +45,20 @@
             RoomNumber = roomNumber;
             Movie = movie;
         }
+
+        public Show(DateTime date, DateTime time, Version version, string screeningFormat, string category, int roomNumber, Movie movie, double price, int admissions)
+        {
+            Date = date;
+            Time = time;
+            Version = version;
+            ScreeningFormat = screeningFormat;
+            Category = category;
+            RoomNumber = roomNumber;
+            Movie = movie;
+            Price = price;
+            Admissions = admissions;
+        }
+
 
 
         public Show()

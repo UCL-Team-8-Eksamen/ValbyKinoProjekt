@@ -14,6 +14,8 @@ namespace ValbyKino.ViewModels
         public string DirectorFirstName { get; set; }
         public string DirectorLastName { get; set; }
         public string OriginalCountry { get; set; }
+
+        public string NationalReleaseString { get; set; }
         public DateTime NationalReleaseDate { get; set; }
         public bool AlternativeContent { get; set; }
         IRepository<Movie> movieRepository = new MovieRepository("Server=localhost;Database=ValbyKinoBilletsystem;Trusted_Connection=True;TrustServerCertificate=true;");
@@ -44,12 +46,11 @@ namespace ValbyKino.ViewModels
             // Add er metoden
             // new Movie kalder konstruktøren med de nødvendige parametre
             Movies.Add(new Movie(
-                OriginalTitle = "Zorro", LocalTitle =                    // OriginalTitle
-                "Zorro Den Maskerede Hævner",   // LocalTitle
-                DirectorFirstName = "Martin",                       // DirectorFirstName
-                DirectorLastName = "Campbell",                     // DirectorLastName
-                OriginalCountry = "US",                           // OriginalCountry
-                NationalReleaseDate = new DateTime(1998, 7, 17),      // NationalReleaseDate
+                OriginalTitle = OriginalTitle, LocalTitle = LocalTitle,   // LocalTitle
+                DirectorFirstName = DirectorFirstName,                       // DirectorFirstName
+                DirectorLastName = DirectorLastName,                     // DirectorLastName
+                OriginalCountry = OriginalCountry,                           // OriginalCountry
+                NationalReleaseDate = DateTime.Now,    // NationalReleaseDate
                 AlternativeContent = true                            // AlternativeContent
             ));
         }

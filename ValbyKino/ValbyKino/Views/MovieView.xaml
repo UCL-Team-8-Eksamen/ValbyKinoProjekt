@@ -22,34 +22,40 @@
 
             <!-- Movie Fields -->
             <StackPanel Margin="0,10">
-                <TextBlock Text="Original Title" Margin="0,0,0,5" />
-                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+                <TextBlock Text="Original Titel" Margin="0,0,0,5" />
+                <TextBox Name="tbTitle" Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" 
+                         Text="{Binding Path=OriginalTitle, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Margin="0,10">
-                <TextBlock Text="Local Title" Margin="0,0,0,5" />
-                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+                <TextBlock Text="Lokal Titel" Margin="0,0,0,5" />
+                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" 
+                         Text="{Binding Path=LocalTitle, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Margin="0,10">
-                <TextBlock Text="Director First Name" Margin="0,0,0,5" />
-                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+                <TextBlock Text="Instruktør Fornavn" Margin="0,0,0,5" />
+                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" 
+                         Text="{Binding Path=DirectorFirstName, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Margin="0,10">
-                <TextBlock Text="Director Last Name" Margin="0,0,0,5" />
-                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+                <TextBlock Text="Instruktør Efternavn" Margin="0,0,0,5" />
+                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" 
+                         Text="{Binding Path=DirectorLastName, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Margin="0,10">
-                <TextBlock Text="Original Country" Margin="0,0,0,5" />
-                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+                <TextBlock Text="Oprindelsesland" Margin="0,0,0,5" />
+                <TextBox Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" 
+                         Text="{Binding Path=OriginalCountry, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Margin="0,10">
-                <TextBlock Text="National Release Date" Margin="0,0,0,5" />
-                <DatePicker Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+                <TextBlock Text="National Udgivelsesdato" Margin="0,0,0,5" />
+                <DatePicker Name="datePicker" SelectedDate="2024-12-20" Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+                <TextBlock Text="{Binding ElementName=datePicker, Path=NationalReleaseString}"/>
             </StackPanel>
             <StackPanel Margin="0,10">
-                <TextBlock Text="Alternative Content" Margin="0,0,0,5" />
+                <TextBlock Text="Alternativt Indhold" Margin="0,0,0,5" />
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <RadioButton Content="Yes" GroupName="AlternativeContent" Margin="55,0,70,0" />
-                    <RadioButton Content="No" GroupName="AlternativeContent" />
+                    <RadioButton Content="Ja" GroupName="AlternativeContent" Margin="55,0,70,0" />
+                    <RadioButton Content="Nej" GroupName="AlternativeContent" />
                 </StackPanel>
             </StackPanel>
 

@@ -22,14 +22,14 @@
             <!-- Film DropDown -->
             <StackPanel Margin="0,10">
                 <TextBlock Text="Film" Margin="0,0,0,5" />
-                <ComboBox ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedFilm}" 
+                <ComboBox ItemsSource="{Binding Movies}" SelectedItem="{Binding SelectedMovie}" DisplayMemberPath="LocalTitle"
                           Width="260" Height="30" BorderBrush="#6B8E23" BorderThickness="1" />
             </StackPanel>
 
             <!-- Dato DropDown -->
             <StackPanel Margin="0,10">
                 <TextBlock Text="Dato" Margin="0,0,0,5" />
-                <DatePicker Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
+                <DatePicker SelectedDate ="2025-01-17" Width="260" Height="30" Margin="0,0,0,10" BorderBrush="#6B8E23" BorderThickness="1" />
             </StackPanel>
 
             <!-- Tid -->
@@ -41,38 +41,48 @@
             <!-- Version DropDown -->
             <StackPanel Margin="0,10">
                 <TextBlock Text="Version" Margin="0,0,0,5" />
-                <ComboBox ItemsSource="{Binding Versions}" SelectedItem="{Binding SelectedVersion}" 
-                          Width="260" Height="30" BorderBrush="#6B8E23" BorderThickness="1" />
+                <ComboBox Width="260" Height="30" BorderBrush="#6B8E23" BorderThickness="1">
+                    <ComboBoxItem>ST</ComboBoxItem>
+                    <ComboBoxItem>VO</ComboBoxItem>
+                    <ComboBoxItem>DB</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
 
             <!-- Format DropDown -->
             <StackPanel Margin="0,10">
                 <TextBlock Text="Format" Margin="0,0,0,5" />
-                <ComboBox ItemsSource="{Binding Formats}" SelectedItem="{Binding SelectedFormat}" 
-                          Width="260" Height="30" BorderBrush="#6B8E23" BorderThickness="1" />
+                <ComboBox Width="260" Height="30" BorderBrush="#6B8E23" BorderThickness="1">
+                    <ComboBoxItem>1</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem>4</ComboBoxItem>
+                    <ComboBoxItem>5</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
 
             <!-- Sal -->
             <StackPanel Margin="0,10">
                 <TextBlock Text="Sal" Margin="0,0,0,5" />
-                <TextBox Text="{Binding Hall}" Width="260" Height="30" BorderBrush="#6B8E23" BorderThickness="1" />
+                <TextBox Text="{Binding Path=OriginalTitle, UpdateSourceTrigger=PropertyChanged}" Width="260" Height="30" BorderBrush="#6B8E23" BorderThickness="1"/>
             </StackPanel>
 
             <!-- Kategori -->
             <StackPanel Margin="0,10">
                 <TextBlock Text="Kategori" Margin="0,0,0,5" />
-                <TextBox Text="{Binding Category}" Width="260" Height="30" BorderBrush="#6B8E23" BorderThickness="1" />
+                <TextBox Text="{Binding Path=Category, UpdateSourceTrigger=PropertyChanged}" Width="260" Height="30" BorderBrush="#6B8E23" BorderThickness="1" />
             </StackPanel>
 
             <!-- Pris -->
             <StackPanel Margin="0,10">
                 <TextBlock Text="Pris DDK" Margin="0,0,0,5" />
-                <TextBox Text="{Binding Price}" Width="260" Height="30" BorderBrush="#6B8E23" BorderThickness="1" />
+                <TextBox Text="{Binding Path=Price, UpdateSourceTrigger=PropertyChanged}" Width="260" Height="30" BorderBrush="#6B8E23" BorderThickness="1" />
             </StackPanel>
+
+
 
             <!-- Knapper -->
             <StackPanel Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Center">
-                <Button Content="Opret" Command="{Binding CreateCommand}" Width="75" Height="35" 
+                <Button Content="Opret" Command="{Binding AddShowCommand}" Width="75" Height="35" 
                         Background="#6B8E23" Foreground="White" BorderBrush="Black" BorderThickness="1" Margin="0,10" />
 
                 <Button Content="Slet" Command="{Binding DeleteMovieCommand}" Width="75" Height="35" 
@@ -101,8 +111,8 @@
                       AlternatingRowBackground="#F0F0F0" 
                       RowBackground="White">
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header="Film" Binding="{Binding Movie.LocalTitle}" Width="*" />
                     <DataGridTextColumn Header="Dato" Binding="{Binding Date}" Width="*" />
-                    <DataGridTextColumn Header="Tid" Binding="{Binding Time}" Width="*" />
                     <DataGridTextColumn Header="Version" Binding="{Binding Version}" Width="*" />
                     <DataGridTextColumn Header="Format" Binding="{Binding ScreeningFormat}" Width="*" />
                     <DataGridTextColumn Header="Kategori" Binding="{Binding Category}" Width="*" />
